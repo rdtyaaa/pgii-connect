@@ -17,8 +17,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/student', function () {
         return view('student.personal-data');
     })->name('dashboard');
-    Route::get('/payment', [PaymentController::class, 'detailPayment'])->name('payment');
+    Route::get('/payment/{paymentType}', [PaymentController::class, 'detailPayment'])->name('payment');
     Route::post('/payment/store', [PaymentController::class, 'storePayment'])->name('payment.store');
+    Route::get('/document', [StudentController::class, 'indexDocument'])->name('document');
 });
 
 Route::post('/payments/callback', [PaymentController::class, 'handleCallback']);

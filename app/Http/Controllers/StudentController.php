@@ -50,7 +50,7 @@ class StudentController extends Controller
             DB::commit();
 
             return redirect()
-                ->route('payment')
+                ->route('payment', ['paymentType' => 'formulir'])
                 ->with([
                     'success' => 'Data siswa berhasil disimpan.',
                 ]);
@@ -61,5 +61,10 @@ class StudentController extends Controller
                 ->back()
                 ->with('error', 'Terjadi kesalahan: ' . $e->getMessage());
         }
+    }
+
+    public function indexDocument(){
+        $student = Student::where('user_id', auth()->id())->first();
+        return view('student.document-data', compact('student'));
     }
 }

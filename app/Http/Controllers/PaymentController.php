@@ -11,7 +11,7 @@ use App\Http\Controllers\Controller;
 
 class PaymentController extends Controller
 {
-    public function detailPayment(Request $request)
+    public function detailPayment(Request $request, $paymentType)
     {
         Config::$serverKey = config('midtrans.server_key');
         Config::$isProduction = config('midtrans.is_production');
@@ -20,15 +20,21 @@ class PaymentController extends Controller
 
         $student = Student::where('user_id', auth()->id())->first();
 
+        $paymentDetails = $this->getPaymentDetails($paymentType);
+
+        if (!$paymentDetails) {
+            return response()->json(['error' => 'Invalid payment type'], 400);
+        }
+
         $transaction_details = [
             'order_id' => uniqid(),
-            'gross_amount' => 70000,
+            'gross_amount' => $paymentDetails['gross_amount'],
         ];
 
         $customer_details = [
-            'name' => $student->name, // Mengambil nama dari tabel student
-            'email' => $student->email, // Mengambil email dari tabel student
-            'phone' => $student->phone, // Mengambil nomor telepon dari tabel student
+            'name' => $student->name,
+            'email' => $student->email,
+            'phone' => $student->phone,
         ];
 
         $params = [
@@ -38,7 +44,10 @@ class PaymentController extends Controller
 
         $snapToken = Snap::getSnapToken($params);
 
-        $payment = Payment::where('user_id', auth()->id())->where('description', 'Pembelian Formulir')->where('status', 'pending')->first();
+        $payment = Payment::where('user_id', auth()->id())
+            ->where('description', $paymentDetails['description'])
+            ->where('status', 'pending')
+            ->first();
 
         if ($payment) {
             $payment->update([
@@ -53,11 +62,29 @@ class PaymentController extends Controller
                 'amount' => $transaction_details['gross_amount'],
                 'snap_token' => $snapToken,
                 'status' => 'pending',
-                'description' => 'Pembelian Formulir',
+                'description' => $paymentDetails['description'],
             ]);
         }
 
         return view('student.form-payment', compact('snapToken', 'student'));
+    }
+
+    private function getPaymentDetails($paymentType)
+    {
+        switch ($paymentType) {
+            case 'formulir':
+                return [
+                    'gross_amount' => 70000,
+                    'description' => 'Pembelian Formulir',
+                ];
+            case 'uang_awal':
+                return [
+                    'gross_amount' => 1000000, // misalnya jumlah untuk uang awal
+                    'description' => 'Pembayaran Uang Awal',
+                ];
+            default:
+                return null; // Tidak valid
+        }
     }
 
     public function storePayment(Request $request)
@@ -89,31 +116,13 @@ class PaymentController extends Controller
                 ]);
             }
 
-            return response()->json(['success' => true]);
+            return redirect()
+                ->route('document')
+                ->with([
+                    'success' => 'Pembayaran berhasil.',
+                ]);
         }
 
         return response()->json(['success' => false, 'message' => 'Payment not found']);
-    }
-
-    public function handleCallback(Request $request)
-    {
-        $serverKey = config('midtrans.server_key');
-        $json = json_decode($request->getContent(), true);
-
-        if ($json['signature_key'] !== hash('sha512', $json['order_id'] . $json['status_code'] . $json['gross_amount'] . $serverKey)) {
-            return response()->json(['message' => 'Invalid signature'], 403);
-        }
-
-        $payment = Payment::where('order_id', $json['order_id'])->first();
-
-        if ($json['transaction_status'] == 'settlement') {
-            $payment->update(['status' => 'success']);
-        } elseif ($json['transaction_status'] == 'pending') {
-            $payment->update(['status' => 'pending']);
-        } elseif ($json['transaction_status'] == 'deny' || $json['transaction_status'] == 'expire' || $json['transaction_status'] == 'cancel') {
-            $payment->update(['status' => 'failed']);
-        }
-
-        return response()->json(['message' => 'Callback received']);
     }
 }

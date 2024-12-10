@@ -72,7 +72,8 @@
                         </div>
                     </div>
                     <div id="snap-container" class="w-1/2 rounded-lg p-8">
-
+                        <div id="snap-token" data-snap-token="{{ $snapToken }}"
+                            data-payment-route="{{ route('payment.store') }}"></div>
                     </div>
                 </div>
             </div>
@@ -84,54 +85,5 @@
             height: 100% !important;
         }
     </style>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Pastikan snapToken sudah tersedia
-            const snapToken = "{{ $snapToken ?? '' }}";
-
-            if (!snapToken) {
-                alert('Snap token tidak tersedia. Pastikan Snap token dikirim dari server.');
-                return;
-            }
-
-            window.snap.embed(snapToken, {
-                embedId: 'snap-container',
-                onSuccess: function(result) {
-                    console.log('Success:', result);
-
-                    // Buat form secara dinamis
-                    const form = document.createElement('form');
-                    form.method = 'POST';
-                    form.action = "{{ route('payment.store') }}";
-
-                    // Tambahkan CSRF Token
-                    const csrfTokenInput = document.createElement('input');
-                    csrfTokenInput.type = 'hidden';
-                    csrfTokenInput.name = '_token';
-                    csrfTokenInput.value = document.querySelector('meta[name="csrf-token"]')
-                        .getAttribute('content');
-                    form.appendChild(csrfTokenInput);
-
-                    // Tambahkan data transaksi ke dalam form
-                    Object.entries(result).forEach(([key, value]) => {
-                        const input = document.createElement('input');
-                        input.type = 'hidden';
-                        input.name = key;
-                        input.value = value;
-                        form.appendChild(input);
-                    });
-
-                    // Submit form
-                    document.body.appendChild(form);
-                    form.submit();
-                },
-                onPending: function(result) {
-                    console.log('Pending:', result);
-                },
-                onError: function(result) {
-                    console.log('Error:', result);
-                },
-            });
-        });
-    </script>
+    <script src="{{ asset('build/assets/js/midtrans-snap.js') }}"></script>
 </x-app-layout>
