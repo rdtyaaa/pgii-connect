@@ -13,4 +13,9 @@ class Scholarship extends Model
         'start_year',
         'end_year',
     ];
+
+    public function student()
+    {
+        return $this->belongsTo(Student::class);
+    }
 }

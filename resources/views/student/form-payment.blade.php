@@ -7,7 +7,7 @@
             <div>
                 <div class="flex items-center">
                     <img class="h-16 w-16 rounded-lg bg-black object-cover" src="{{ Auth::user()->avatar }}"
-                        alt="Avatar">
+                        alt="Avatar" referrerpolicy="no-referrer">
 
                     {{-- Cewek --}}
                     {{-- <img class="h-16 w-16 rounded-lg bg-yellow-400 object-cover"

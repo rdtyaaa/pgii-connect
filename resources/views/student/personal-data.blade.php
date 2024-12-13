@@ -56,6 +56,9 @@
                                 <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
                             @enderror
                         </div>
+
+
+
                         <div>
                             <label for="parent_name"
                                 class="mb-2 block text-sm font-medium text-gray-900 dark:text-white">Nama Wali
@@ -110,33 +113,39 @@
                                 <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
                             @enderror
                         </div>
+                        <div>
+                            <label for="school_origin"
+                                class="mb-2 block text-sm font-medium text-gray-900 dark:text-white">Asal
+                                Sekolah</label>
+                            <input type="text" id="school_origin" name="school_origin"
+                                class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
+                                placeholder="Misal: SMA 1 Kota Bandung" value="{{ old('school_origin') }}" required />
+                            @error('school_origin')
+                                <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                            @enderror
+                        </div>
+                        <x-select-field id="parent_type" name="parent_type" label="Sebagai:" :value="old('parent_type')" required>
+                            <option value="Ayah">Ayah</option>
+                            <option value="Ibu">Ibu</option>
+                            <option value="Wali Murid">Wali Murid</option>
+                        </x-select-field>
+                        <div>
+                            <label for="gender"
+                                class="mb-2 block text-sm font-medium text-gray-900 dark:text-white">Jenis
+                                Kelamin</label>
+                            <select id="gender" name="gender"
+                                class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
+                                value="{{ old('gender') }}" required>
+                                <option selected>Pilih Jenis Kelamin</option>
+                                <option value="M">Laki-Laki</option>
+                                <option value="W">Perempuan</option>
+                            </select>
+                            @error('gender')
+                                <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                            @enderror
+                        </div>
                     </div>
-                    <div class="mb-6">
-                        <label for="school_origin"
-                            class="mb-2 block text-sm font-medium text-gray-900 dark:text-white">Asal
-                            Sekolah</label>
-                        <input type="text" id="school_origin" name="school_origin"
-                            class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
-                            placeholder="Misal: SMA 1 Kota Bandung" value="{{ old('school_origin') }}" required />
-                        @error('school_origin')
-                            <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
-                        @enderror
-                    </div>
-                    <div class="mb-6">
-                        <label for="gender"
-                            class="mb-2 block text-sm font-medium text-gray-900 dark:text-white">Jenis
-                            Kelamin</label>
-                        <select id="gender" name="gender"
-                            class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
-                            value="{{ old('gender') }}" required>
-                            <option selected>Pilih Jenis Kelamin</option>
-                            <option value="M">Laki-Laki</option>
-                            <option value="W">Perempuan</option>
-                        </select>
-                        @error('gender')
-                            <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
-                        @enderror
-                    </div>
+
 
                     <div class="mb-6 flex items-start">
                         <div class="flex h-5 items-center">

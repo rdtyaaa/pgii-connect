@@ -15,7 +15,8 @@ return new class extends Migration
             $table->id();
             $table->foreignId('student_id')->constrained()->onDelete('cascade');
             $table->string('nickname')->nullable();
-            $table->string('birth_place_date')->nullable();
+            $table->string('birth_place')->nullable();
+            $table->date('birth_date')->nullable();
             $table->string('religion')->nullable();
             $table->string('nationality')->nullable();
             $table->string('school_origin')->nullable();

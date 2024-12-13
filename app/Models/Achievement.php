@@ -14,4 +14,9 @@ class Achievement extends Model
         'year',
         'organizer',
     ];
+
+    public function student()
+    {
+        return $this->belongsTo(Student::class);
+    }
 }

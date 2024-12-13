@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Midtrans\Snap;
+use App\Models\Log;
 use Midtrans\Config;
 use App\Models\Payment;
 use App\Models\Student;
@@ -115,6 +116,12 @@ class PaymentController extends Controller
                     'status' => 'Tahap 2',
                 ]);
             }
+
+            Log::create([
+                'student_id' => $student->id,
+                'action' => 'Payment Succes',
+                'description' => 'Pembayaran oleh: ' . $student->name . ' berhasil dengan order id - ' . $request->order_id,
+            ]);
 
             return redirect()
                 ->route('document')

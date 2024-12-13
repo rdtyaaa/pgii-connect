@@ -34,4 +34,9 @@ class DetailStudent extends Model
         'distance_to_school',
         'travel_time',
     ];
+
+    public function student()
+    {
+        return $this->belongsTo(Student::class);
+    }
 }

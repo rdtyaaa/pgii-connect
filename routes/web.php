@@ -20,6 +20,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/payment/{paymentType}', [PaymentController::class, 'detailPayment'])->name('payment');
     Route::post('/payment/store', [PaymentController::class, 'storePayment'])->name('payment.store');
     Route::get('/document', [StudentController::class, 'indexDocument'])->name('document');
+    Route::post('/student/store-document', [StudentController::class, 'storeDocument'])->name('students.store.documents');
 });
 
 Route::post('/payments/callback', [PaymentController::class, 'handleCallback']);

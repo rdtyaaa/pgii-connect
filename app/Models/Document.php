@@ -11,4 +11,9 @@ class Document extends Model
         'type',
         'path',
     ];
+
+    public function student()
+    {
+        return $this->belongsTo(Student::class);
+    }
 }
