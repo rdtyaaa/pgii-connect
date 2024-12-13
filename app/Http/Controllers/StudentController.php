@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use App\Models\Log;
 use App\Models\Student;
 use App\Models\Document;
+use App\Models\Interview;
 use App\Models\Achievement;
 use App\Models\Scholarship;
 use Illuminate\Http\Request;
@@ -312,9 +314,24 @@ class StudentController extends Controller
                 }
             }
 
+            $interview = Interview::create([
+                'student_id' => $student->id,
+                'scheduled_at' => Carbon::now()->addWeek(),
+                'interviewer' => null,
+                'status' => 'dijadwalkan',
+            ]);
+
+            $student->update([
+                'status' => 'Tahap 3',
+            ]);
+
             DB::commit();
 
-            return response()->json(['message' => 'Documents uploaded successfully.'], 200);
+            return redirect()
+                ->route('information')
+                ->with([
+                    'success' => 'Data dokumen berhasil disimpan.',
+                ]);
         } catch (\Exception $e) {
             DB::rollBack();
             dd($e->getMessage());
@@ -322,5 +339,16 @@ class StudentController extends Controller
                 ->back()
                 ->with('error', 'Terjadi kesalahan: ' . $e->getMessage());
         }
+    }
+
+    public function indexInformation()
+    {
+        $student = Student::where('user_id', auth()->id())
+            ->with('interviews') // Memuat relasi interviews
+            ->first();
+
+        $scheduledInterview = $student->interviews->where('status', 'dijadwalkan')->first();
+
+        return view('student.information', compact('student', 'scheduledInterview'));
     }
 }

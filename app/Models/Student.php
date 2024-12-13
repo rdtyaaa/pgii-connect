@@ -24,11 +24,16 @@ class Student extends Model
 
     public function parent()
     {
-        return $this->hasOne(Parent::class);
+        return $this->hasOne(parent::class);
     }
 
     public function detailStudent()
     {
         return $this->hasOne(DetailStudent::class);
+    }
+
+    public function interviews()
+    {
+        return $this->hasMany(Interview::class, 'student_id');
     }
 }

@@ -41,7 +41,7 @@ class GoogleAuthController extends Controller
 
             switch ($student->status) {
                 case 'Tahap 1':
-                    return redirect()->route('payment');
+                    return redirect()->route('payment', ['paymentType' => 'formulir']) ;
                 case 'Tahap 2':
                     return redirect()->route('document');
                 case 'Tahap 3':
