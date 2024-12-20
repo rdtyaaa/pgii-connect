@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Carbon\Carbon;
 use App\Models\Log;
+use App\Models\Setting;
 use App\Models\Student;
 use App\Models\Document;
 use App\Models\Interview;
@@ -314,11 +315,19 @@ class StudentController extends Controller
                 }
             }
 
+
+
             $interview = Interview::create([
                 'student_id' => $student->id,
                 'scheduled_at' => Carbon::now()->addWeek(),
                 'interviewer' => null,
                 'status' => 'dijadwalkan',
+            ]);
+
+            Log::create([
+                'student_id' => $student->id,
+                'action' => 'Completed document input',
+                'description' => 'Dokumen sudah diinputkan oleh: ' . $student->name . ' Wawancara dijadwalkan pada ' . Carbon::now()->addWeek(),
             ]);
 
             $student->update([
@@ -347,8 +356,10 @@ class StudentController extends Controller
             ->with('interviews') // Memuat relasi interviews
             ->first();
 
-        $scheduledInterview = $student->interviews->where('status', 'dijadwalkan')->first();
+        $settings = Setting::whereIn('key', ['school_email', 'school_phone'])->get()->pluck('value', 'key');
 
-        return view('student.information', compact('student', 'scheduledInterview'));
+        $scheduledInterview = $student->interviews->first();
+
+        return view('student.information', compact('student', 'scheduledInterview', 'settings'));
     }
 }

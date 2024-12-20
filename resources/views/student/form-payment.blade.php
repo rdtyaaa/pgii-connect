@@ -6,8 +6,8 @@
         <div class="w-1/4 rounded-r-lg bg-white p-4 shadow-lg">
             <div>
                 <div class="flex items-center">
-                    <img class="h-16 w-16 rounded-lg bg-black object-cover" src="{{ Auth::user()->avatar }}"
-                        alt="Avatar" referrerpolicy="no-referrer">
+                    <img class="h-16 w-16 rounded-lg bg-black object-cover" src="{{ Auth::user()->avatar }}" alt="Avatar"
+                        referrerpolicy="no-referrer">
 
                     {{-- Cewek --}}
                     {{-- <img class="h-16 w-16 rounded-lg bg-yellow-400 object-cover"
@@ -37,13 +37,32 @@
         </div>
         <div class="item-center ms-12 flex w-full flex-wrap rounded-l-lg bg-white p-4 shadow-lg">
             <h4 class="w-full text-lg font-bold">Tahapan Registrasi</h4>
-            <x-registration-step :currentStep="2" />
+            <x-registration-step :currentStep="$currentStep" />
         </div>
     </div>
 
     <div class="mx-auto my-12 px-12">
         <div class="bg-white shadow-sm sm:rounded-lg">
             <div class="overflow-y-auto px-16 py-8 text-gray-900">
+                @if ($paymentType === 'uang_awal')
+                    <div id="alert-2"
+                        class="mb-4 flex items-center justify-between rounded-lg border border-green-300 bg-green-50 p-4 text-sm text-green-800"
+                        role="alert">
+                        <div class="flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                stroke-width="1.5" stroke="currentColor" class="size-6">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M12 9v3.75m9-.75a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9 3.75h.008v.008H12v-.008Z" />
+                            </svg>
+
+                            <span class="ms-2 font-medium">Selamat! Anda diterima:</span>
+                            <p class="ml-1">
+                                Selamat! Anda telah diterima di sekolah kami. Silahkan lanjutkan melakukan pembayaran
+                                uang awal!
+                            </p>
+                        </div>
+                    </div>
+                @endif
                 <h1 class="mb-4 text-2xl font-bold">Data Diri</h1>
                 <div class="flex">
                     <div class="w-1/2 gap-6">
@@ -73,7 +92,7 @@
                     </div>
                     <div id="snap-container" class="w-1/2 rounded-lg p-8">
                         <div id="snap-token" data-snap-token="{{ $snapToken }}"
-                            data-payment-route="{{ route('payment.store') }}"></div>
+                            data-payment-route="{{ route('payment.store', ['paymentType' => $paymentType]) }}"></div>
                     </div>
                 </div>
             </div>

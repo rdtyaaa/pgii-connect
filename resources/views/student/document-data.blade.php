@@ -180,32 +180,32 @@
                                     placeholder="Misal: Anton Pargoy" :value="$student['name']" disabled />
 
                                 <x-input-field id="nickname" name="nickname" label="Nama Panggilan"
-                                    placeholder="Misal: Anton" :value="old('nickname')" required />
+                                    placeholder="Misal: Anton" :value="old('nickname')" req />
 
-                                <x-input-field id="gender" name="gender" label="Jenis Kelamin"
+                                {{-- <x-input-field id="gender" name="gender" label="Jenis Kelamin"
                                     placeholder="Laki-laki/Perempuan" :value="$student['gender']" disabled />
 
                                 <x-input-field id="school_origin" name="school_origin" label="Asal SMP"
-                                    placeholder="Misal: SMP Negeri 1" :value="$details->school_origin" disabled />
+                                    placeholder="Misal: SMP Negeri 1" :value="$details->school_origin" disabled /> --}}
 
                                 <x-input-field id="nisn" name="nisn" label="NISN" type="number"
-                                    placeholder="1234567890" :value="old('nisn')" required />
+                                    placeholder="1234567890" :value="old('nisn')" req />
+
 
                                 <x-input-field id="nis" name="nis" label="NIS" type="number"
-                                    placeholder="123456" :value="old('nis')" required />
+                                    placeholder="123456" :value="old('nis')" req />
 
                                 <x-input-field id="ijazah_number" name="ijazah_number"
-                                    label="Nomor Seri Ijazah Resmi" placeholder="123456789" :value="old('ijazah_number')"
-                                    required />
+                                    label="Nomor Seri Ijazah Resmi" placeholder="123456789" :value="old('ijazah_number')" req />
 
                                 <x-input-field id="skhun_number" name="skhun_number" label="Nomor Seri SKHUN"
-                                    placeholder="123456789" :value="old('skhun_number')" required />
+                                    placeholder="123456789" :value="old('skhun_number')" req />
 
                                 <x-input-field id="exam_number" name="exam_number" label="No Ujian Nasional SMP"
-                                    placeholder="123456789" :value="old('exam_number')" required />
+                                    placeholder="123456789" :value="old('exam_number')" req />
 
                                 <x-input-field id="nik" name="nik" label="NIK" type="number"
-                                    placeholder="1234567890123456" :value="old('nik')" required />
+                                    placeholder="1234567890123456" :value="old('nik')" req />
 
                                 <div>
                                     <label class="mb-2 block text-sm font-medium text-gray-900 dark:text-white">
@@ -217,7 +217,7 @@
                                                 class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
                                                 placeholder="Misal: Jakarta" value="{{ old('birth_place') }}"
                                                 required />
-                                            @error('birth_place_date')
+                                            @error('birth_place')
                                                 <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
                                             @enderror
                                         </div>
@@ -235,32 +235,35 @@
                                             <input datepicker id="default-datepicker" name="birth_date"
                                                 type="text"
                                                 class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 ps-10 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
-                                                placeholder="Select date">
+                                                placeholder="Select date" required>
+                                            @error('birth_date')
+                                                <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                                            @enderror
                                         </div>
                                     </div>
                                 </div>
 
                                 <x-input-field id="religion" name="religion" label="Agama"
-                                    placeholder="Misal: Islam" :value="old('religion')" required />
+                                    placeholder="Misal: Islam" :value="old('religion')" req />
 
                                 <x-input-field id="nationality" name="nationality" label="Kewarganegaraan"
-                                    placeholder="Misal: WNI" :value="old('nationality')" required />
+                                    placeholder="Misal: WNI" :value="old('nationality')" req />
 
                                 <x-input-field id="siblings_count" name="siblings_count"
                                     label="Jumlah Saudara Kandung" type="number" placeholder="Misal: 2"
-                                    :value="old('siblings_count')" required />
+                                    :value="old('siblings_count')" req />
 
                                 <x-input-field id="child_position" name="child_position" label="Anak Ke-"
-                                    type="number" placeholder="Misal: 1" :value="old('child_position')" required />
+                                    type="number" placeholder="Misal: 1" :value="old('child_position')" req />
 
                                 <x-input-field id="language" name="language" label="Bahasa Sehari-hari di Rumah"
-                                    placeholder="Misal: Bahasa Indonesia" :value="old('language')" required />
+                                    placeholder="Misal: Bahasa Indonesia" :value="old('language')" req />
 
                                 <x-input-field id="special_needs" name="special_needs" label="Berkebutuhan Khusus"
-                                    placeholder="Misal: Tidak" :value="old('special_needs')" required />
+                                    placeholder="Misal: Tidak" :value="old('special_needs')" req />
 
                                 <x-input-field id="address" name="address" label="Alamat Tempat Tinggal Lengkap"
-                                    placeholder="Misal: Jl. Merdeka No. 123" :value="old('address')" required />
+                                    placeholder="Misal: Jl. Merdeka No. 123" :value="old('address')" req />
 
                                 <x-select-field id="transport" name="transport" label="Alat Transportasi Ke Sekolah"
                                     :value="old('transport')" required>
@@ -283,11 +286,11 @@
                                 <x-input-field id="home_phone" name="home_phone" label="No Telepon Rumah"
                                     type="tel" placeholder="021-123456" :value="old('home_phone')" />
 
-                                <x-input-field id="mobile_phone" name="mobile_phone" label="No Telepon HP"
+                                {{-- <x-input-field id="mobile_phone" name="mobile_phone" label="No Telepon HP"
                                     type="tel" placeholder="081234567890" :value="$student['phone']" disabled />
 
                                 <x-input-field id="email" name="email" label="Email Pribadi" type="email"
-                                    placeholder="email@example.com" :value="$student['email']" disabled />
+                                    placeholder="email@example.com" :value="$student['email']" disabled /> --}}
 
                                 <x-select-field id="kps_receiver" name="kps_receiver"
                                     label="Apakah Sebagai Penerima KPS" :value="old('kps_receiver')" required>
@@ -311,40 +314,40 @@
                             <x-input-field id="father_name" name="father_name" label="Nama Ayah"
                                 placeholder="Nama Ayah" :value="old('father_name') ?? ($parents->where('type', 'Ayah')->first()->name ?? '')" :disabled="$parents->where('type', 'Ayah')->isNotEmpty()" />
                             <x-input-field id="father_birth_year" name="father_birth_year" label="Tahun Lahir Ayah"
-                                placeholder="Tahun Lahir" :value="old('father_birth_year')" type="number" required />
+                                placeholder="Tahun Lahir" :value="old('father_birth_year')" type="number" req />
                             <x-select-field id="father_special_needs" name="father_special_needs"
                                 label="Berkebutuhan Khusus Ayah" :value="old('father_special_needs')" required>
                                 <option value="tidak">Tidak</option>
                                 <option value="ya">Ya</option>
                             </x-select-field>
                             <x-input-field id="father_job" name="father_job" label="Pekerjaan Ayah"
-                                placeholder="Pekerjaan" :value="old('father_job')" required />
+                                placeholder="Pekerjaan" :value="old('father_job')" req />
                             <x-input-field id="father_education" name="father_education" label="Pendidikan Ayah"
-                                placeholder="Pendidikan" :value="old('father_education')" required />
+                                placeholder="Pendidikan" :value="old('father_education')" req />
                             <x-input-field id="father_monthly_income" name="father_monthly_income"
                                 label="Penghasilan Bulanan Ayah" placeholder="Penghasilan" :value="old('father_monthly_income')"
-                                type="number" required />
+                                type="number" req />
                         </div>
 
                         <!-- Data Ibu -->
                         <h3 class="my-4 text-lg font-semibold text-gray-900 dark:text-white">Data Ibu</h3>
                         <div class="grid grid-cols-2 gap-6">
                             <x-input-field id="mother_name" name="mother_name" label="Nama Ibu"
-                                placeholder="Nama Ibu" :value="old('mother_name') ?? ($parents->where('type', 'Ibu')->first()->name ?? '')" :disabled="$parents->where('type', 'Ibu')->isNotEmpty()" required />
+                                placeholder="Nama Ibu" :value="old('mother_name') ?? ($parents->where('type', 'Ibu')->first()->name ?? '')" :disabled="$parents->where('type', 'Ibu')->isNotEmpty()" />
                             <x-input-field id="mother_birth_year" name="mother_birth_year" label="Tahun Lahir Ibu"
-                                placeholder="Tahun Lahir" :value="old('mother_birth_year')" type="number" required />
+                                placeholder="Tahun Lahir" :value="old('mother_birth_year')" type="number" req />
                             <x-select-field id="mother_special_needs" name="mother_special_needs"
                                 label="Berkebutuhan Khusus Ibu" :value="old('mother_special_needs')" required>
                                 <option value="tidak">Tidak</option>
                                 <option value="ya">Ya</option>
                             </x-select-field>
                             <x-input-field id="mother_job" name="mother_job" label="Pekerjaan Ibu"
-                                placeholder="Pekerjaan" :value="old('mother_job')" required />
+                                placeholder="Pekerjaan" :value="old('mother_job')" req />
                             <x-input-field id="mother_education" name="mother_education" label="Pendidikan Ibu"
-                                placeholder="Pendidikan" :value="old('mother_education')" required />
+                                placeholder="Pendidikan" :value="old('mother_education')" req />
                             <x-input-field id="mother_monthly_income" name="mother_monthly_income"
                                 label="Penghasilan Bulanan Ibu" placeholder="Penghasilan" :value="old('mother_monthly_income')"
-                                type="number" required />
+                                type="number" req />
                         </div>
 
                         <!-- Data Wali Murid (Opsional) -->
@@ -377,9 +380,9 @@
                         <h3 class="mb-4 text-lg font-semibold text-gray-900 dark:text-white">Data Periodik</h3>
                         <div class="grid grid-cols-2 gap-6">
                             <x-input-field id="height" name="height" label="Tinggi Badan (cm)"
-                                placeholder="Contoh: 170" :value="old('height')" type="number" required />
+                                placeholder="Contoh: 170" :value="old('height')" type="number" req />
                             <x-input-field id="weight" name="weight" label="Berat Badan (kg)"
-                                placeholder="Contoh: 60" :value="old('weight')" type="number" required />
+                                placeholder="Contoh: 60" :value="old('weight')" type="number" req />
                             <x-select-field id="blood_type" name="blood_type" label="Golongan Darah"
                                 :value="old('blood_type')" required>
                                 <option value="A">A</option>
@@ -389,10 +392,10 @@
                             </x-select-field>
                             <x-input-field id="distance_to_school" name="distance_to_school"
                                 label="Jarak Tempat Tinggal ke Sekolah (km)" placeholder="Contoh: 5"
-                                :value="old('distance_to_school')" type="number" required />
+                                :value="old('distance_to_school')" type="number" req />
                             <x-input-field id="travel_time" name="travel_time"
                                 label="Waktu Tempuh ke Sekolah (menit)" placeholder="Contoh: 30" :value="old('travel_time')"
-                                type="number" required />
+                                type="number" req />
                         </div>
 
                         <!-- Data Prestasi -->
@@ -449,8 +452,52 @@
                             class="w-full rounded-lg bg-gray-700 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-gray-800 focus:outline-none focus:ring-4 focus:ring-gray-300 dark:bg-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-800 sm:w-auto"></button>
                         <button type="button" id="nextButton" onclick="nextPage()"
                             class="ms-auto w-full rounded-lg bg-green-700 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-green-800 focus:outline-none focus:ring-4 focus:ring-green-300 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800 sm:w-auto"></button>
-                        <button type="submit" id="submitButton" style="display: none;"
-                            class="w-full rounded-lg bg-blue-700 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 sm:w-auto">Submit</button>
+                        {{-- <button type="submit" id="submitButton" style="display: none;"
+                            class="w-full rounded-lg bg-blue-700 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 sm:w-auto">Submit</button> --}}
+                        <button id="submitButton" style="display: none;" data-modal-target="popup-modal"
+                            data-modal-toggle="popup-modal"
+                            class="block rounded-lg bg-blue-700 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                            type="button">
+                            Submit
+                        </button>
+                    </div>
+
+                    <div id="popup-modal" tabindex="-1"
+                        class="fixed left-0 right-0 top-0 z-50 hidden h-[calc(100%-1rem)] max-h-full w-full items-center justify-center overflow-y-auto overflow-x-hidden md:inset-0">
+                        <div class="relative max-h-full w-full max-w-md p-4">
+                            <div class="relative rounded-lg bg-white shadow dark:bg-gray-700">
+                                <button type="button"
+                                    class="absolute end-2.5 top-3 ms-auto inline-flex h-8 w-8 items-center justify-center rounded-lg bg-transparent text-sm text-gray-400 hover:bg-gray-200 hover:text-gray-900 dark:hover:bg-gray-600 dark:hover:text-white"
+                                    data-modal-hide="popup-modal">
+                                    <svg class="h-3 w-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                        fill="none" viewBox="0 0 14 14">
+                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                            stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                                    </svg>
+                                    <span class="sr-only">Close modal</span>
+                                </button>
+                                <div class="p-4 text-center md:p-5">
+                                    <svg class="mx-auto mb-4 h-12 w-12 text-gray-400 dark:text-gray-200"
+                                        aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                        viewBox="0 0 20 20">
+                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                            stroke-width="2"
+                                            d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                                    </svg>
+                                    <h3 class="mb text-gray-8 text-lg font-normal">Apakah data sudah
+                                        sesuai?</h3>
+                                    <p class="mb-6 text-sm font-normal text-gray-400">Data yang diinputkan tidak dapat
+                                        diubah nantinya!</p>
+                                    <button data-modal-hide="popup-modal" type="button"
+                                        class="ms-3 rounded-lg border border-gray-200 bg-white px-5 py-2.5 text-sm font-medium text-gray-900 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:outline-none focus:ring-4 focus:ring-gray-100 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white dark:focus:ring-gray-700">Tidak,
+                                        batalkan</button>
+                                    <button data-modal-hide="popup-modal" id="submitButtonModal" type="submit"
+                                        class="inline-flex items-center rounded-lg bg-blue-600 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-800">
+                                        Ya, saya yakin
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </form>
             </div>
@@ -461,21 +508,26 @@
         document.addEventListener("DOMContentLoaded", function() {
             const kpsReceiverSelect = document.getElementById("kps_receiver");
             const kpsNumberInput = document.getElementById("kps_number-container");
+            const kpsNumberField = document.getElementById("kps_number");
 
             // Menambahkan event listener untuk perubahan pada select "kps_receiver"
             kpsReceiverSelect.addEventListener("change", function() {
                 if (this.value === "ya") {
                     kpsNumberInput.style.display = "block"; // Menampilkan input "No KPS" jika "Ya"
+                    kpsNumberField.setAttribute("required", "required"); // Menambahkan atribut required
                 } else {
                     kpsNumberInput.style.display = "none"; // Menyembunyikan input "No KPS" jika "Tidak"
+                    kpsNumberField.removeAttribute("required"); // Menghapus atribut required
                 }
             });
 
             // Cek status pada saat halaman pertama kali dimuat
             if (kpsReceiverSelect.value === "ya") {
                 kpsNumberInput.style.display = "block"; // Jika sebelumnya "Ya", tampilkan input "No KPS"
+                kpsNumberField.setAttribute("required", "required"); // Tambahkan atribut required
             }
         });
+
 
         document.addEventListener('DOMContentLoaded', () => {
             // Tambah Prestasi

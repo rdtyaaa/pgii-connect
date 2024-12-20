@@ -3,8 +3,12 @@
 namespace App\Models;
 
 use App\Models\Log;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\User;
+use App\Models\Document;
+use App\Models\Interview;
+use App\Models\DetailStudent;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Student extends Model
 {
@@ -35,5 +39,10 @@ class Student extends Model
     public function interviews()
     {
         return $this->hasMany(Interview::class, 'student_id');
+    }
+
+    public function documents()
+    {
+        return $this->hasMany(Document::class);
     }
 }

@@ -28,6 +28,12 @@
             <img class="ps-2 pt-4" src="{{ asset('build/assets/img/logo_PGII.png') }}" alt="Logo SMA">
         </div>
 
+        @if ($errors->has('error'))
+            <div class="alert alert-danger">
+                {{ $errors->first('error') }}
+            </div>
+        @endif
+
         <main class="flex-grow">
             {{ $slot }}
         </main>

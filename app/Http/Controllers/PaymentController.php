@@ -12,6 +12,32 @@ use App\Http\Controllers\Controller;
 
 class PaymentController extends Controller
 {
+    public function index(Request $request)
+    {
+        // Query untuk mengambil data dari model Payment
+        $query = Payment::query()->with('user.student')->orderBy('payment_date', 'desc'); // Data terbaru terlebih dahulu
+
+        // Filter berdasarkan search (jika ada)
+        if ($search = $request->get('search')) {
+            $query
+                ->where('order_id', 'like', "%{$search}%")
+                ->orWhere('user_id', 'like', "%{$search}%")
+                ->orWhere('status', 'like', "%{$search}%")
+                ->orWhere('payment_type', 'like', "%{$search}%")
+                ->orWhereHas('user.student', function ($q) use ($search) {
+                    $q->where('name', 'like', "%{$search}%"); // Mencari berdasarkan nama student
+                });
+        }
+
+        // Pagination 25 data
+        $payments = $query->paginate(25);
+
+        // Ambil unique description untuk dropdown
+        $paymentTypes = Payment::select('description')->distinct()->pluck('description');
+
+        return view('admin.payments.index', compact('payments', 'paymentTypes'));
+    }
+
     public function detailPayment(Request $request, $paymentType)
     {
         Config::$serverKey = config('midtrans.server_key');
@@ -27,36 +53,32 @@ class PaymentController extends Controller
             return response()->json(['error' => 'Invalid payment type'], 400);
         }
 
-        $transaction_details = [
-            'order_id' => uniqid(),
-            'gross_amount' => $paymentDetails['gross_amount'],
-        ];
-
-        $customer_details = [
-            'name' => $student->name,
-            'email' => $student->email,
-            'phone' => $student->phone,
-        ];
-
-        $params = [
-            'transaction_details' => $transaction_details,
-            'customer_details' => $customer_details,
-        ];
-
-        $snapToken = Snap::getSnapToken($params);
-
+        // Cek apakah pembayaran sudah ada dan masih dalam status 'pending'
         $payment = Payment::where('user_id', auth()->id())
             ->where('description', $paymentDetails['description'])
-            ->where('status', 'pending')
             ->first();
 
-        if ($payment) {
-            $payment->update([
-                'order_id' => $transaction_details['order_id'],
-                'amount' => $transaction_details['gross_amount'],
-                'snap_token' => $snapToken,
-            ]);
-        } else {
+        if (!$payment) {
+            // Jika belum ada transaksi yang pending, buat transaksi baru
+            $transaction_details = [
+                'order_id' => uniqid(),
+                'gross_amount' => $paymentDetails['gross_amount'],
+            ];
+
+            $customer_details = [
+                'name' => $student->name,
+                'email' => $student->email,
+                'phone' => $student->phone,
+            ];
+
+            $params = [
+                'transaction_details' => $transaction_details,
+                'customer_details' => $customer_details,
+            ];
+
+            $snapToken = Snap::getSnapToken($params);
+
+            // Membuat pembayaran baru
             $payment = Payment::create([
                 'order_id' => $transaction_details['order_id'],
                 'user_id' => auth()->id(),
@@ -65,9 +87,14 @@ class PaymentController extends Controller
                 'status' => 'pending',
                 'description' => $paymentDetails['description'],
             ]);
+        } else {
+            // Ambil snapToken yang sudah ada jika transaksi sudah ada
+            $snapToken = $payment->snap_token;
         }
 
-        return view('student.form-payment', compact('snapToken', 'student'));
+        $currentStep = $paymentType === 'formulir' ? 2 : ($paymentType === 'uang_awal' ? 5 : 1);
+
+        return view('student.form-payment', compact('snapToken', 'student', 'currentStep', 'paymentType'));
     }
 
     private function getPaymentDetails($paymentType)
@@ -88,7 +115,7 @@ class PaymentController extends Controller
         }
     }
 
-    public function storePayment(Request $request)
+    public function storePayment(Request $request, $paymentType)
     {
         // Validasi data pembayaran yang diterima
         $request->validate([
@@ -119,15 +146,30 @@ class PaymentController extends Controller
 
             Log::create([
                 'student_id' => $student->id,
-                'action' => 'Payment Succes',
+                'action' => 'Form Purchase',
                 'description' => 'Pembayaran oleh: ' . $student->name . ' berhasil dengan order id - ' . $request->order_id,
             ]);
 
-            return redirect()
-                ->route('document')
-                ->with([
-                    'success' => 'Pembayaran berhasil.',
-                ]);
+            // Periksa paymentType yang diterima dari parameter route
+            if ($paymentType === 'formulir') {
+                return redirect()
+                    ->route('document')
+                    ->with([
+                        'success' => 'Pembayaran berhasil. Formulir telah dibayar.',
+                    ]);
+            } elseif ($paymentType === 'uang_awal') {
+                return redirect()
+                    ->route('information')
+                    ->with([
+                        'success' => 'Pembayaran uang awal berhasil.',
+                    ]);
+            } else {
+                return redirect()
+                    ->route('home')
+                    ->with([
+                        'error' => 'Jenis pembayaran tidak valid.',
+                    ]);
+            }
         }
 
         return response()->json(['success' => false, 'message' => 'Payment not found']);

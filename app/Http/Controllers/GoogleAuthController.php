@@ -35,13 +35,18 @@ class GoogleAuthController extends Controller
             Auth::login($user);
             $student = $user->student;
 
+            // Jika user adalah admin, redirect ke dashboard admin
+            if ($user->is_admin) {
+                return redirect()->route('admin.dashboard');
+            }
+
             if (!$student) {
                 return redirect('/student');
             }
 
             switch ($student->status) {
                 case 'Tahap 1':
-                    return redirect()->route('payment', ['paymentType' => 'formulir']) ;
+                    return redirect()->route('payment', ['paymentType' => 'formulir']);
                 case 'Tahap 2':
                     return redirect()->route('document');
                 case 'Tahap 3':

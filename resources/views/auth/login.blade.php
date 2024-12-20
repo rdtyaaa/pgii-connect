@@ -1,9 +1,10 @@
 <x-guest-layout>
-    <!-- Session Status -->
-    <x-auth-session-status class="mb-4" :status="session('status')" />
-    <div class="h-screen flex flex-col">
+    
+
+    <div class="flex h-screen flex-col">
+
         <img class="mx-auto pt-12" src="{{ asset('build/assets/img/logo_PGII.png') }}" alt="Logo SMA">
-        <div class="flex items-center flex-grow align-center justify-between p-32">
+        <div class="align-center flex flex-grow items-center justify-between p-32">
             <div class="text-wrap w-1/3 text-white">
                 <h4 class="text-3xl font-extrabold">Sekolah Islam yang Bermutu, Bermartabat, dan Terpuji.</h4>
 
@@ -78,7 +79,7 @@
 
                 <div class="mt-4 flex">
                     <a href="{{ route('auth.google.redirect') }}"
-                        class="flex items-center justify-center w-full rounded-lg border border-gray-300 bg-white px-4 py-2 shadow-sm hover:cursor-pointer hover:bg-gray-100">
+                        class="flex w-full items-center justify-center rounded-lg border border-gray-300 bg-white px-4 py-2 shadow-sm hover:cursor-pointer hover:bg-gray-100">
                         <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="25" height="25"
                             viewBox="0 0 48 48">
                             <path fill="#FFC107"
@@ -94,7 +95,7 @@
                                 d="M43.611,20.083H42V20H24v8h11.303c-0.792,2.237-2.231,4.166-4.087,5.571c0.001-0.001,0.002-0.001,0.003-0.002l6.19,5.238C36.971,39.205,44,34,44,24C44,22.659,43.862,21.35,43.611,20.083z">
                             </path>
                         </svg>
-                        <span class="text-sm ms-4 font-medium text-gray-700">Sign in with Google</span>
+                        <span class="ms-4 text-sm font-medium text-gray-700">Sign in with Google</span>
                     </a>
                 </div>
 
