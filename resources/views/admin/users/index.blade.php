@@ -11,7 +11,7 @@
     {{-- </div> --}}
 
     <div class="relative overflow-x-auto border shadow sm:rounded-lg">
-        <table class="w-full text-left text-sm text-gray-500 rtl:text-right dark:text-gray-400">
+        <table class="w-full text-left text-sm text-gray-500 dark:text-gray-400 rtl:text-right">
             <thead class="border-b bg-gray-50 text-xs uppercase text-gray-700 dark:bg-gray-700 dark:text-gray-400">
                 <tr>
                     <th scope="col" class="px-6 py-3">Name</th>
@@ -32,7 +32,15 @@
                         <td class="whitespace-nowrap px-6 py-4 font-medium text-gray-900 dark:text-white">
                             {{ $user->name }}</td>
                         <td class="px-6 py-4">{{ $user->email }}</td>
-                        <td class="px-6 py-4">{{ $user->is_admin ? 'Admin' : 'User' }}</td>
+                        <td class="px-6 py-4">
+                            @if ($user->is_admin && $user->is_interviewer)
+                                Admin
+                            @elseif($user->is_interviewer)
+                                Interviewer
+                            @else
+                                User
+                            @endif
+                        </td>
                         <td class="space-x-2 px-6 py-4">
                             <a href="{{ route('users.edit', $user->id) }}"
                                 class="text-blue-600 hover:underline dark:text-blue-500">Edit</a>

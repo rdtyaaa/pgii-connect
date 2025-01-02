@@ -36,7 +36,7 @@ class GoogleAuthController extends Controller
             $student = $user->student;
 
             // Jika user adalah admin, redirect ke dashboard admin
-            if ($user->is_admin) {
+            if ($user->is_admin || $user->is_interviewer) {
                 return redirect()->route('admin.dashboard');
             }
 

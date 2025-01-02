@@ -24,27 +24,41 @@ class UserController extends Controller
 
     // Menyimpan data pengguna baru
     public function store(Request $request)
-    {
-        $validated = $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|email|max:255|unique:users,email',
-            'password' => 'required|string|min:8|confirmed',
-            'avatar' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
-        ]);
+{
+    $validated = $request->validate([
+        'name' => 'required|string|max:255',
+        'email' => 'required|email|max:255|unique:users,email',
+        'password' => 'required|string|min:8|confirmed',
+        'avatar' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
+        'role' => 'required|string|in:user,admin,interviewer', // Menambahkan validasi role
+    ]);
 
-        // Hash password
-        $validated['password'] = Hash::make($request->password);
+    // Hash password
+    $validated['password'] = Hash::make($request->password);
 
-        // Handle avatar upload jika ada
-        if ($request->hasFile('avatar')) {
-            $validated['avatar'] = $request->file('avatar')->store('avatars', 'public');
-        }
-
-        // Simpan data pengguna baru
-        User::create($validated);
-
-        return redirect()->route('users.index')->with('success', 'User created successfully.');
+    // Handle avatar upload jika ada
+    if ($request->hasFile('avatar')) {
+        $validated['avatar'] = $request->file('avatar')->store('avatars', 'public');
     }
+
+    // Menangani role
+    if ($validated['role'] == 'admin') {
+        $validated['is_admin'] = true;
+        $validated['is_interviewer'] = false; // Set false karena interviewer adalah role terpisah
+    } elseif ($validated['role'] == 'interviewer') {
+        $validated['is_admin'] = false; // Nonaktifkan admin karena role interviewer berdiri sendiri
+        $validated['is_interviewer'] = true;
+    } else {
+        $validated['is_admin'] = false;
+        $validated['is_interviewer'] = false;
+    }
+
+    // Simpan data pengguna baru dengan role yang sesuai
+    User::create($validated);
+
+    return redirect()->route('users.index')->with('success', 'User created successfully.');
+}
+
 
     // Menampilkan form edit
     public function edit(User $user)
@@ -54,25 +68,30 @@ class UserController extends Controller
 
     // Update data pengguna
     public function update(Request $request, User $user)
-{
-    $validated = $request->validate([
-        'name' => 'required|string|max:255',
-        'email' => 'required|email|max:255|unique:users,email,' . $user->id,
-        // 'avatar' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
-        'is_admin' => 'required|boolean',
-    ]);
+    {
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|max:255|unique:users,email,' . $user->id,
+            'role' => 'required|string|in:user,admin,interviewer',
+        ]);
 
-    // Handle avatar upload if exists
-    // if ($request->hasFile('avatar')) {
-    //     $validated['avatar'] = $request->file('avatar')->store('avatars', 'public');
-    // }
+        // Menangani perubahan role
+        if ($validated['role'] == 'admin') {
+            $user->is_admin = true;
+            $user->is_interviewer = false; // Set false karena interviewer adalah role terpisah
+        } elseif ($validated['role'] == 'interviewer') {
+            $user->is_admin = false; // Nonaktifkan admin karena role interviewer berdiri sendiri
+            $user->is_interviewer = true;
+        } else {
+            $user->is_admin = false;
+            $user->is_interviewer = false;
+        }
 
-    // Update the user, including 'is_admin'
-    $user->update($validated);
+        // Update the user including the new role settings
+        $user->update($validated);
 
-    return redirect()->route('users.index')->with('success', 'User updated successfully.');
-}
-
+        return redirect()->route('users.index')->with('success', 'User updated successfully.');
+    }
 
     // Delete pengguna
     public function destroy(User $user)
@@ -91,7 +110,9 @@ class UserController extends Controller
 
         // Verifikasi password pengguna yang sedang login
         if (!Hash::check($request->password, auth()->user()->password)) {
-            return redirect()->route('users.index')->withErrors(['password' => 'Invalid password.']);
+            return redirect()
+                ->route('users.index')
+                ->withErrors(['password' => 'Invalid password.']);
         }
 
         $user->update(['is_admin' => true]);

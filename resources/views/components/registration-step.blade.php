@@ -1,5 +1,5 @@
 <div class="mb-4 mt-2 flex w-full gap-4">
-        @foreach(range(1, 5) as $step)
+        @foreach(range(1, 6) as $step)
             <div class="my-auto w-1/5 rounded-lg
                 {{ $currentStep == $step ? 'bg-yellow-300' : ($currentStep > $step ? 'bg-green-400' : 'bg-gray-300') }}
                 p-4 shadow-md">
@@ -20,6 +20,9 @@
                             @break
                         @case(5)
                             Pembayaran Uang Muka
+                            @break
+                        @case(6)
+                            Selamat Datang!
                             @break
                     @endswitch
                 </p>

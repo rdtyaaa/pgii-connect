@@ -21,9 +21,9 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
-<body class="font-sans antialiased">
-    <div class="flex flex-col bg-cover bg-center"
-        style="background-image: url('{{ asset('build/assets/img/BGBlur.png') }}');">
+<body class="font-sans antialiased"
+    style="background-image: url('{{ asset('build/assets/img/BGBlur.png') }}'); background-size: cover;">
+    <div class="flex flex-col bg-cover bg-center">
         <div class="h-48" style="background-image: url('{{ asset('build/assets/img/Pattern.png') }}');">
             <img class="ps-2 pt-4" src="{{ asset('build/assets/img/logo_PGII.png') }}" alt="Logo SMA">
         </div>

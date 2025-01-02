@@ -370,4 +370,9 @@ class StudentController extends Controller
 
         return view('student.information', compact('student', 'scheduledInterview', 'settings'));
     }
+
+    public function final()
+    {
+        return view('student.final');
+    }
 }

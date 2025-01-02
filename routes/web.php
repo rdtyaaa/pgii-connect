@@ -24,6 +24,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/payment/{paymentType}', [PaymentController::class, 'detailPayment'])->name('payment');
     Route::post('/payment/{paymentType}', [PaymentController::class, 'storePayment'])->name('payment.store');
     Route::get('/document', [StudentController::class, 'indexDocument'])->name('document');
+    Route::get('/final', [StudentController::class, 'final'])->name('final');
     Route::post('/student/store-document', [StudentController::class, 'storeDocument'])->name('students.store.documents');
     Route::get('/information', [StudentController::class, 'indexInformation'])->name('information');
 });
@@ -31,9 +32,6 @@ Route::middleware('auth')->group(function () {
 Route::prefix('admin')
     ->middleware(['auth', 'admin'])
     ->group(function () {
-        // Menampilkan dashboard admin
-        Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
-
         // Menampilkan manajemen pengguna
         Route::get('/users', [AdminController::class, 'users'])->name('admin.users');
 
@@ -47,14 +45,14 @@ Route::prefix('admin')
 
         Route::resource('users', UserController::class)->except(['show']);
         Route::post('users/{user}/give-access', [UserController::class, 'giveAccess'])->name('users.give-access');
-        Route::get('interviews', [InterviewController::class, 'index'])->name('interviews.index');
-        Route::get('interviews/{interview}', [InterviewController::class, 'show'])->name('interviews.detail');
-        Route::put('interviews/{interview}/status', [InterviewController::class, 'updateStatus'])->name('interviews.updateStatus');
     });
 
-// Route group untuk admin
-Route::middleware(['auth', 'is_admin'])
-    ->prefix('admin')
-    ->group(function () {});
+Route::middleware(['auth', 'interviewer'])->group(function () {
+    Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
+
+    Route::get('interviews', [InterviewController::class, 'index'])->name('interviews.index');
+    Route::get('interviews/{interview}', [InterviewController::class, 'show'])->name('interviews.detail');
+    Route::put('interviews/{interview}/status', [InterviewController::class, 'updateStatus'])->name('interviews.updateStatus');
+});
 
 require __DIR__ . '/auth.php';

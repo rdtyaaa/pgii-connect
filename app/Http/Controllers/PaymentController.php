@@ -159,7 +159,7 @@ class PaymentController extends Controller
                     ]);
             } elseif ($paymentType === 'uang_awal') {
                 return redirect()
-                    ->route('information')
+                    ->route('final')
                     ->with([
                         'success' => 'Pembayaran uang awal berhasil.',
                     ]);

@@ -44,15 +44,23 @@
                 </div> --}}
 
                 <div>
-                    <label for="is_admin"
+                    <label for="role"
                         class="mb-2 block text-sm font-medium text-gray-900 dark:text-white">Role</label>
-                    <select name="is_admin" id="is_admin"
+                    <select name="role" id="role"
                         class="w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-500 dark:bg-gray-600 dark:text-white"
                         required>
-                        <option value="0" {{ isset($user) && !$user->is_admin ? 'selected' : '' }}>User</option>
-                        <option value="1" {{ isset($user) && $user->is_admin ? 'selected' : '' }}>Admin</option>
+                        <option value="user"
+                            {{ isset($user) && !$user->is_admin && !$user->is_interviewer ? 'selected' : '' }}>User
+                        </option>
+                        <option value="interviewer"
+                            {{ isset($user) && !$user->is_admin && $user->is_interviewer ? 'selected' : '' }}>
+                            Interviewer</option>
+                        <option value="admin"
+                            {{ isset($user) && $user->is_admin && $user->is_interviewer ? 'selected' : '' }}>Admin
+                        </option>
                     </select>
                 </div>
+
             </div>
 
             <div class="mt-4 flex justify-end">

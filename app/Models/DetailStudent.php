@@ -9,7 +9,8 @@ class DetailStudent extends Model
     protected $fillable = [
         'student_id',
         'nickname',
-        'birth_place_date',
+        'birth_place',
+        'birth_date',
         'religion',
         'nationality',
         'school_origin',

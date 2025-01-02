@@ -3,18 +3,24 @@
 namespace App\Http\Controllers;
 
 use App\Models\Log;
+use App\Models\Student;
 use Illuminate\Http\Request;
+use App\Models\DetailStudent;
 use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\DB;
 
 class AdminController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('admin'); // Pastikan hanya admin yang bisa mengakses controller ini
-    }
-
     public function dashboard()
     {
+        $sekolah = DetailStudent::select('school_origin', DB::raw('count(*) as total'))->groupBy('school_origin')->get();
+
+        // Mengambil data untuk chart berdasarkan jenis kelamin
+        $gender = Student::select('students.gender', DB::raw('count(*) as total'))->groupBy('students.gender')->get();
+
+        // Mengambil data untuk chart berdasarkan kebutuhan khusus
+        $specialNeeds = DetailStudent::select('special_needs', DB::raw('count(*) as total'))->groupBy('special_needs')->get();
+
         // Menghitung jumlah total pendaftar (Student Created)
         $totalPendaftar = Log::where('action', 'Student created')->count();
 
@@ -36,7 +42,7 @@ class AdminController extends Controller
         // Menghitung sisa mahasiswa yang belum diterima
         $sisaPesertaDiterima = $wawancaraDijadwalkan - $pesertaDiterima;
 
-        return view('admin.dashboard', compact('totalPendaftar', 'pembelianFormulir', 'wawancaraDijadwalkan', 'pesertaDiterima', 'sisaPendaftar', 'sisaWawancara', 'sisaPesertaDiterima'));
+        return view('admin.dashboard', compact('totalPendaftar', 'pembelianFormulir', 'wawancaraDijadwalkan', 'pesertaDiterima', 'sisaPendaftar', 'sisaWawancara', 'sisaPesertaDiterima', 'sekolah', 'gender', 'specialNeeds'));
     }
 
     // Menampilkan wawancara
