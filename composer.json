@@ -7,6 +7,9 @@
     "license": "MIT",
     "require": {
         "php": "^8.2",
+        "aiven/aiven-laravel": "^1.0",
+        "cloudinary-labs/cloudinary-laravel": "^2.2",
+        "doctrine/dbal": "^4.2",
         "laravel/framework": "^11.31",
         "laravel/socialite": "^5.16",
         "laravel/tinker": "^2.9",

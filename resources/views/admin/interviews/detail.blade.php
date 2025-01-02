@@ -9,9 +9,9 @@
                 src="{{ Str::replaceFirst('=s96-c', '', $interview->student->user->avatar) }}" alt="Avatar"
                 referrerpolicy="no-referrer">
             <div class="ms-4 w-full overflow-x-auto rounded-lg border shadow">
-                <table class="w-full text-left text-sm text-gray-500 rtl:text-right dark:text-gray-400">
+                <table class="w-full text-left text-sm text-gray-500 dark:text-gray-400 rtl:text-right">
                     <caption
-                        class="bg-gray-100 p-5 text-left text-lg font-semibold text-gray-900 rtl:text-right dark:bg-gray-800 dark:text-white">
+                        class="bg-gray-100 p-5 text-left text-lg font-semibold text-gray-900 dark:bg-gray-800 dark:text-white rtl:text-right">
                         Student Information
                     </caption>
                     <tbody>
@@ -34,9 +34,9 @@
 
         @if ($interview->student->detailStudent)
             <div class="relative mt-8 overflow-x-auto rounded-lg border shadow">
-                <table class="w-full text-left text-sm text-gray-500 rtl:text-right dark:text-gray-400">
+                <table class="w-full text-left text-sm text-gray-500 dark:text-gray-400 rtl:text-right">
                     <caption
-                        class="bg-gray-100 p-5 text-left text-lg font-semibold text-gray-900 rtl:text-right dark:bg-gray-800 dark:text-white">
+                        class="bg-gray-100 p-5 text-left text-lg font-semibold text-gray-900 dark:bg-gray-800 dark:text-white rtl:text-right">
                         Student Details
                     </caption>
                     <thead class="bg-gray-50 text-xs uppercase text-gray-700 dark:bg-gray-700 dark:text-gray-400">
@@ -156,9 +156,9 @@
 
         @if ($interview->student->documents->isNotEmpty())
             <div class="relative mt-8 overflow-x-auto rounded-lg border shadow">
-                <table class="w-full text-left text-sm text-gray-500 rtl:text-right dark:text-gray-400">
+                <table class="w-full text-left text-sm text-gray-500 dark:text-gray-400 rtl:text-right">
                     <caption
-                        class="bg-gray-100 p-5 text-left text-lg font-semibold text-gray-900 rtl:text-right dark:bg-gray-800 dark:text-white">
+                        class="bg-gray-100 p-5 text-left text-lg font-semibold text-gray-900 dark:bg-gray-800 dark:text-white rtl:text-right">
                         Documents
                     </caption>
                     <thead class="bg-gray-50 text-xs uppercase text-gray-700 dark:bg-gray-700 dark:text-gray-400">

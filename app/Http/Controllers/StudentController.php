@@ -16,6 +16,7 @@ use App\Models\StudentParent;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
 
 class StudentController extends Controller
 {
@@ -171,12 +172,19 @@ class StudentController extends Controller
         try {
             foreach ($documents as $type => $file) {
                 if ($file) {
-                    $path = $file->store('documents', 'public');
+                    // Upload file ke Cloudinary
+                    $uploadedFile = Cloudinary::upload($file->getRealPath(), [
+                        'folder' => 'documents/' . $student->name,
+                    ]);
 
+                    // Mendapatkan URL file yang diupload
+                    $fileUrl = $uploadedFile->getSecurePath();
+
+                    // Simpan data ke database
                     Document::create([
                         'student_id' => $student->id,
                         'type' => $type,
-                        'path' => $path,
+                        'path' => $fileUrl, // Gunakan URL Cloudinary
                     ]);
                 }
             }
@@ -315,8 +323,6 @@ class StudentController extends Controller
                 }
             }
 
-
-
             $interview = Interview::create([
                 'student_id' => $student->id,
                 'scheduled_at' => Carbon::now()->addWeek(),
@@ -356,7 +362,9 @@ class StudentController extends Controller
             ->with('interviews') // Memuat relasi interviews
             ->first();
 
-        $settings = Setting::whereIn('key', ['school_email', 'school_phone'])->get()->pluck('value', 'key');
+        $settings = Setting::whereIn('key', ['school_email', 'school_phone'])
+            ->get()
+            ->pluck('value', 'key');
 
         $scheduledInterview = $student->interviews->first();
 

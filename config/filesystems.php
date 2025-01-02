@@ -1,7 +1,6 @@
 <?php
 
 return [
-
     /*
     |--------------------------------------------------------------------------
     | Default Filesystem Disk
@@ -29,7 +28,6 @@ return [
     */
 
     'disks' => [
-
         'local' => [
             'driver' => 'local',
             'root' => storage_path('app/private'),
@@ -40,7 +38,7 @@ return [
         'public' => [
             'driver' => 'local',
             'root' => storage_path('app/public'),
-            'url' => env('APP_URL').'/storage',
+            'url' => env('APP_URL') . '/storage',
             'visibility' => 'public',
             'throw' => false,
         ],
@@ -57,6 +55,12 @@ return [
             'throw' => false,
         ],
 
+        'cloudinary' => [
+            'driver' => 'cloudinary',
+            'api_key' => env('CLOUDINARY_API_KEY'),
+            'api_secret' => env('CLOUDINARY_API_SECRET'),
+            'cloud_name' => env('CLOUDINARY_CLOUD_NAME'),
+        ],
     ],
 
     /*
@@ -73,5 +77,4 @@ return [
     'links' => [
         public_path('storage') => storage_path('app/public'),
     ],
-
 ];

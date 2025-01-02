@@ -1,11 +1,11 @@
 <x-guest-layout>
-    
+
 
     <div class="flex h-screen flex-col">
 
         <img class="mx-auto pt-12" src="{{ asset('build/assets/img/logo_PGII.png') }}" alt="Logo SMA">
         <div class="align-center flex flex-grow items-center justify-between p-32">
-            <div class="text-wrap w-1/3 text-white">
+            <div class="w-1/3 text-wrap text-white">
                 <h4 class="text-3xl font-extrabold">Sekolah Islam yang Bermutu, Bermartabat, dan Terpuji.</h4>
 
                 <h5 class="mb-2 mt-8">Misi:</h5>
