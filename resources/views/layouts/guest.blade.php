@@ -18,7 +18,7 @@
 
 <body class="font-sans antialiased">
     <div class="h-screen bg-cover bg-center"
-        style="background-image: url('{{ Vite::asset('resources/assets/img/Background.png') }}');">
+        style="background-image: url('{{ asset('build/assets/img/Background.png') }}');">
 
         <!-- Session Status -->
         <x-auth-session-status class="mb-4" :status="session('error')" />

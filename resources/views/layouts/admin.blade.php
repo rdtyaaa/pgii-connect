@@ -24,9 +24,9 @@
 
 <body class="h-screen overflow-y-hidden font-sans antialiased">
     <div class="flex h-screen flex-col bg-cover bg-center"
-        style="background-image: url('{{ Vite::asset('resources/assets/img/BGBlur.png') }}');">
-        <div class="h-48" style="background-image: url('{{ Vite::asset('resources/assets/img/Pattern.png') }}');">
-            <img class="ps-2 pt-4" src="{{ Vite::asset('resources/assets/img/logo_PGII.png') }}" alt="Logo SMA">
+        style="background-image: url('{{ asset('build/assets/img/BGBlur.png') }}');">
+        <div class="h-48" style="background-image: url('{{ asset('build/assets/img/Pattern.png') }}');">
+            <img class="ps-2 pt-4" src="{{ asset('build/assets/img/logo_PGII.png') }}" alt="Logo SMA">
         </div>
 
         @if ($errors->has('error'))
