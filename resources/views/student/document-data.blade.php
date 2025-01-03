@@ -37,7 +37,7 @@
                 <form id="form-document" action="{{ route('students.store.documents') }}" method="POST"
                     enctype="multipart/form-data">
                     @csrf
-                    {{-- <div class="page mb-6" id="page1" data-name="Data Dokumen">
+                    <div class="page mb-6" id="page1" data-name="Data Dokumen">
                         <h1 class="mb-4 text-2xl font-bold">Input Dokumen</h1>
                         <div class="mb-6 grid grid-cols-4 gap-6">
                             <div>
@@ -296,7 +296,7 @@
                         </div>
                         <button type="button" onclick="submitForm(2)"
                             class="mt-4 rounded bg-blue-500 px-4 py-2 text-white">Simpan</button>
-                    </div> --}}
+                    </div>
 
                     <div class="page mb-6" id="page3" data-name="Data Periodik" style="display: none;">
                         <!-- Data Periodik -->
