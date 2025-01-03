@@ -22,10 +22,10 @@
 </head>
 
 <body class="font-sans antialiased"
-    style="background-image: url('{{ asset('build/assets/img/BGBlur.png') }}'); background-size: cover;">
+    style="background-image: url('https://res.cloudinary.com/dmgrpklyt/image/upload/v1735869627/pgii-connect/cbcmpya2exgn3evxbkqx.png'); background-size: cover;">
     <div class="flex flex-col bg-cover bg-center">
-        <div class="h-48" style="background-image: url('{{ asset('build/assets/img/Pattern.png') }}');">
-            <img class="ps-2 pt-4" src="{{ asset('build/assets/img/logo_PGII.png') }}" alt="Logo SMA">
+        <div class="h-48" style="background-image: url('https://res.cloudinary.com/dmgrpklyt/image/upload/v1735869637/pgii-connect/sxgrgiutg4wtev5ppswx.png');">
+            <img class="ps-2 pt-4" src="https://res.cloudinary.com/dmgrpklyt/image/upload/v1735869628/pgii-connect/yionj4rpfyu8oujol1ro.png" alt="Logo SMA">
         </div>
 
         @if ($errors->has('error'))

@@ -18,7 +18,7 @@
 
 <body class="font-sans antialiased">
     <div class="h-screen bg-cover bg-center"
-        style="background-image: url('{{ asset('build/assets/img/Background.png') }}');">
+        style="background-image: url('https://res.cloudinary.com/dmgrpklyt/image/upload/v1735869626/pgii-connect/ps5eizsnnx0kwy1kydet.png');">
 
         <!-- Session Status -->
         <x-auth-session-status class="mb-4" :status="session('error')" />
