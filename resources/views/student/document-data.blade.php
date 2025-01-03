@@ -171,7 +171,7 @@
                         </div>
                         <button type="button" onclick="submitForm(1)"
                             class="mt-4 rounded bg-blue-500 px-4 py-2 text-white">Simpan</button>
-                    </div> --}}
+                    </div>
 
                     {{-- <div class="page mb-6" id="page2" data-name="Detail Diri" style="display: none;">
                         <h1 class="mb-4 text-2xl font-bold">Data Diri</h1>
