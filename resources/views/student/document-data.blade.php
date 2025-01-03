@@ -37,7 +37,7 @@
                 <form id="form-document" action="{{ route('students.store.documents') }}" method="POST"
                     enctype="multipart/form-data">
                     @csrf
-                    <div class="page mb-6" id="page1" data-name="Data Dokumen">
+                    {{-- <div class="page mb-6" id="page1" data-name="Data Dokumen">
                         <h1 class="mb-4 text-2xl font-bold">Input Dokumen</h1>
                         <div class="mb-6 grid grid-cols-4 gap-6">
                             <div>
@@ -169,9 +169,11 @@
                                 @enderror
                             </div>
                         </div>
-                    </div>
+                        <button type="button" onclick="submitForm(1)"
+                            class="mt-4 rounded bg-blue-500 px-4 py-2 text-white">Simpan</button>
+                    </div> --}}
 
-                    <div class="page mb-6" id="page2" data-name="Detail Diri" style="display: none;">
+                    {{-- <div class="page mb-6" id="page2" data-name="Detail Diri" style="display: none;">
                         <h1 class="mb-4 text-2xl font-bold">Data Diri</h1>
                         <div class="mb-8">
                             <h2 class="mb-4 text-lg font-semibold">Identitas Peserta</h2>
@@ -181,12 +183,6 @@
 
                                 <x-input-field id="nickname" name="nickname" label="Nama Panggilan"
                                     placeholder="Misal: Anton" :value="old('nickname')" req />
-
-                                {{-- <x-input-field id="gender" name="gender" label="Jenis Kelamin"
-                                    placeholder="Laki-laki/Perempuan" :value="$student['gender']" disabled />
-
-                                <x-input-field id="school_origin" name="school_origin" label="Asal SMP"
-                                    placeholder="Misal: SMP Negeri 1" :value="$details->school_origin" disabled /> --}}
 
                                 <x-input-field id="nisn" name="nisn" label="NISN" type="number"
                                     placeholder="1234567890" :value="old('nisn')" req />
@@ -286,12 +282,6 @@
                                 <x-input-field id="home_phone" name="home_phone" label="No Telepon Rumah"
                                     type="tel" placeholder="021-123456" :value="old('home_phone')" />
 
-                                {{-- <x-input-field id="mobile_phone" name="mobile_phone" label="No Telepon HP"
-                                    type="tel" placeholder="081234567890" :value="$student['phone']" disabled />
-
-                                <x-input-field id="email" name="email" label="Email Pribadi" type="email"
-                                    placeholder="email@example.com" :value="$student['email']" disabled /> --}}
-
                                 <x-select-field id="kps_receiver" name="kps_receiver"
                                     label="Apakah Sebagai Penerima KPS" :value="old('kps_receiver')" required>
                                     <option value="ya">Ya</option>
@@ -304,7 +294,9 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                        <button type="button" onclick="submitForm(2)"
+                            class="mt-4 rounded bg-blue-500 px-4 py-2 text-white">Simpan</button>
+                    </div> --}}
 
                     <div class="page mb-6" id="page3" data-name="Data Periodik" style="display: none;">
                         <!-- Data Periodik -->
@@ -314,19 +306,18 @@
                                 placeholder="Contoh: 170" :value="old('height')" type="number" req />
                             <x-input-field id="weight" name="weight" label="Berat Badan (kg)"
                                 placeholder="Contoh: 60" :value="old('weight')" type="number" req />
-                            <x-select-field id="blood_type" name="blood_type" label="Golongan Darah"
-                                :value="old('blood_type')" required>
+                            <x-select-field id="blood_type" name="blood_type" label="Golongan Darah" :value="old('blood_type')"
+                                required>
                                 <option value="A">A</option>
                                 <option value="B">B</option>
                                 <option value="AB">AB</option>
                                 <option value="O">O</option>
                             </x-select-field>
                             <x-input-field id="distance_to_school" name="distance_to_school"
-                                label="Jarak Tempat Tinggal ke Sekolah (km)" placeholder="Contoh: 5"
-                                :value="old('distance_to_school')" type="number" req />
-                            <x-input-field id="travel_time" name="travel_time"
-                                label="Waktu Tempuh ke Sekolah (menit)" placeholder="Contoh: 30" :value="old('travel_time')"
+                                label="Jarak Tempat Tinggal ke Sekolah (km)" placeholder="Contoh: 5" :value="old('distance_to_school')"
                                 type="number" req />
+                            <x-input-field id="travel_time" name="travel_time" label="Waktu Tempuh ke Sekolah (menit)"
+                                placeholder="Contoh: 30" :value="old('travel_time')" type="number" req />
                         </div>
 
                         <!-- Data Prestasi -->
@@ -336,11 +327,10 @@
                                 <div class="achievement-item my-4 grid grid-cols-2 gap-6">
                                     <x-input-field id="achievement_type_0" name="achievement_type[]"
                                         label="Jenis Prestasi" placeholder="Contoh: Olahraga" :value="old('achievement_type.0')" />
-                                    <x-input-field id="achievement_level_0" name="achievement_level[]"
-                                        label="Tingkat" placeholder="Contoh: Nasional" :value="old('achievement_level.0')" />
+                                    <x-input-field id="achievement_level_0" name="achievement_level[]" label="Tingkat"
+                                        placeholder="Contoh: Nasional" :value="old('achievement_level.0')" />
                                     <x-input-field id="achievement_name_0" name="achievement_name[]"
-                                        label="Nama Prestasi" placeholder="Contoh: Juara 1 Renang"
-                                        :value="old('achievement_name.0')" />
+                                        label="Nama Prestasi" placeholder="Contoh: Juara 1 Renang" :value="old('achievement_name.0')" />
                                     <x-input-field id="achievement_year_0" name="achievement_year[]" label="Tahun"
                                         placeholder="Contoh: 2023" :value="old('achievement_year.0')" type="number" />
                                     <x-input-field id="achievement_organizer_0" name="achievement_organizer[]"
@@ -376,6 +366,8 @@
                             id="add-scholarship">
                             Tambahkan Beasiswa
                         </button>
+                        <button type="button" onclick="submitForm(3)"
+                            class="mt-4 rounded bg-blue-500 px-4 py-2 text-white">Simpan</button>
                     </div>
 
                     <div class="page mb-6" id="page4" data-name="Data Orang Tua" style="display: none;">
@@ -444,6 +436,8 @@
                                 label="Penghasilan Bulanan Wali" placeholder="Penghasilan" :value="old('guardian_monthly_income')"
                                 type="number" />
                         </div>
+                        <button type="button" onclick="submitForm(4)"
+                            class="mt-4 rounded bg-blue-500 px-4 py-2 text-white">Simpan</button>
                     </div>
 
                     <div id="navigationButtons" class="flex justify-between">
@@ -490,10 +484,10 @@
                                     <button data-modal-hide="popup-modal" type="button"
                                         class="-:border-gray-600 -:bg-gray-800 -:text-gray-400 -:hover:bg-gray-700 -:hover:text-white -:focus:ring-gray-700 ms-3 rounded-lg border border-gray-200 bg-white px-5 py-2.5 text-sm font-medium text-gray-900 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:outline-none focus:ring-4 focus:ring-gray-100">Tidak,
                                         batalkan</button>
-                                    <button data-modal-hide="popup-modal" id="submitButtonModal" type="submit"
+                                    <a href="{{ route('information') }}" id="submitButtonModal"
                                         class="-:focus:ring-blue-800 inline-flex items-center rounded-lg bg-blue-600 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300">
                                         Ya, saya yakin
-                                    </button>
+                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -510,8 +504,10 @@
             const nextButton = document.getElementById("nextButton");
             const submitButton = document.getElementById("submitButton");
             let currentPage = 0;
+            let isSaved = false;
 
             function updatePage() {
+                isSaved = false;
                 pages.forEach((page, index) => {
                     page.style.display = index === currentPage ? "block" : "none";
                 });
@@ -542,6 +538,10 @@
             };
 
             window.nextPage = function() {
+                if (!isSaved) {
+                    alert("Silakan simpan data terlebih dahulu sebelum melanjutkan.");
+                    return;
+                }
                 if (validateInputs()) {
                     if (currentPage < pages.length - 1) {
                         currentPage++;
@@ -550,7 +550,38 @@
                 }
             };
 
-            updatePage();
+            window.submitForm = function(currentPage) {
+                const form = document.getElementById('form-document');
+                const formData = new FormData(form);
+                formData.append('current_page', currentPage);
+
+
+                fetch('{{ route('students.store.documents') }}', {
+                        method: 'POST',
+                        body: formData,
+                    })
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Network response was not ok');
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        if (data.success) {
+                            alert('Data berhasil disimpan!');
+                            isSaved = true; // Tandai bahwa data telah disimpan
+                            nextPage(); // Pindah ke halaman berikutnya setelah berhasil disimpan
+                        } else {
+                            alert('Error: ' + data.message);
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                        alert('Terjadi kesalahan saat menyimpan data: ' + error.message);
+                    });
+            };
+
+            updatePage(); // Inisialisasi tampilan halaman pertama
 
             const kpsReceiverSelect = document.getElementById("kps_receiver");
             const kpsNumberInput = document.getElementById("kps_number-container");
