@@ -8,7 +8,7 @@ export default defineConfig({
             targets: [
                 {
                     src: "resources/assets/img", // Sumber gambar
-                    dest: "", // Folder tujuan di build
+                    dest: "./", // Folder tujuan di build
                 },
             ],
         }),
