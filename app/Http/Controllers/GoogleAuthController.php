@@ -40,22 +40,24 @@ class GoogleAuthController extends Controller
                 return redirect()->route('admin.dashboard');
             }
 
-            if (!$student) {
-                return redirect('/student');
+            // Pastikan relasi student tidak null dan valid
+            if ($user->student) {
+                switch ($user->student->status) {
+                    case 'Tahap 1':
+                        return redirect()->route('payment', ['paymentType' => 'formulir']);
+                    case 'Tahap 2':
+                        return redirect()->route('document');
+                    case 'Tahap 3':
+                        return redirect()->route('information');
+                    case 'Tahap 4':
+                        return redirect()->route('initial-payment');
+                    default:
+                        return redirect()->route('dashboard');
+                }
             }
 
-            switch ($student->status) {
-                case 'Tahap 1':
-                    return redirect()->route('payment', ['paymentType' => 'formulir']);
-                case 'Tahap 2':
-                    return redirect()->route('document');
-                case 'Tahap 3':
-                    return redirect()->route('information');
-                case 'Tahap 4':
-                    return redirect()->route('initial-payment');
-                default:
-                    return redirect()->route('dashboard');
-            }
+            // Jika tidak ada student, arahkan ke halaman student
+            return redirect('/student');
         } catch (\Exception $e) {
             dd($e->getMessage());
             return redirect('/login')->with('error', 'Something went wrong: ' . $e->getMessage());
