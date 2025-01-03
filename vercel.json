@@ -14,7 +14,7 @@
     "env": {
         "APP_ENV": "production",
         "APP_DEBUG": "false",
-        "APP_URL": "https://yourproductionurl.com",
+        "APP_URL": "https://pgii-connect.vercel.app",
         "APP_KEY": "base64:HflxCgurSxo7emrmr8tPB0Jm1i0x7+3uaUL9ML2zv2A=",
         "APP_CONFIG_CACHE": "/tmp/config.php",
         "APP_EVENTS_CACHE": "/tmp/events.php",
