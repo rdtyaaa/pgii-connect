@@ -36,6 +36,10 @@ class DetailStudent extends Model
         'travel_time',
     ];
 
+    protected $casts = [
+        'birth_date' => 'date',
+    ];
+
     public function student()
     {
         return $this->belongsTo(Student::class);
