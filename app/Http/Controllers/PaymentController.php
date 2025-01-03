@@ -121,7 +121,6 @@ class PaymentController extends Controller
         $request->validate([
             'order_id' => 'required|string',
             'payment_type' => 'required|string',
-            'status_code' => 'required|string',
             'gross_amount' => 'required|numeric',
             'transaction_time' => 'required|date',
         ]);
@@ -152,26 +151,26 @@ class PaymentController extends Controller
 
             // Periksa paymentType yang diterima dari parameter route
             if ($paymentType === 'formulir') {
-                return redirect()
-                    ->route('document')
-                    ->with([
-                        'success' => 'Pembayaran berhasil. Formulir telah dibayar.',
-                    ]);
+                return response()->json([
+                    'success' => true,
+                    'redirect_url' => route('document'),
+                ]);
             } elseif ($paymentType === 'uang_awal') {
-                return redirect()
-                    ->route('final')
-                    ->with([
-                        'success' => 'Pembayaran uang awal berhasil.',
-                    ]);
+                return response()->json([
+                    'success' => true,
+                    'redirect_url' => route('final'), // Sesuaikan dengan halaman yang dituju
+                ]);
             } else {
-                return redirect()
-                    ->route('home')
-                    ->with([
-                        'error' => 'Jenis pembayaran tidak valid.',
-                    ]);
+                return response()->json([
+                    'success' => true,
+                    'redirect_url' => route('/'), // Sesuaikan dengan halaman yang dituju
+                ]);
             }
-        }
-
-        return response()->json(['success' => false, 'message' => 'Payment not found']);
+        } else {
+        return response()->json([
+            'success' => false,
+            'message' => 'Pembayaran gagal, data tidak ditemukan.',
+        ]);
+    }
     }
 }

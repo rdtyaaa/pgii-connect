@@ -10,7 +10,7 @@
                             Input Data Diri
                             @break
                         @case(2)
-                            Pembayaran Form
+                            Pembelian Form
                             @break
                         @case(3)
                             Input Dokumen
@@ -19,7 +19,7 @@
                             Informasi Wawancara
                             @break
                         @case(5)
-                            Pembayaran Uang Muka
+                            Dana Pendidikan
                             @break
                         @case(6)
                             Selamat Datang!
