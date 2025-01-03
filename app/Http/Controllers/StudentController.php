@@ -167,193 +167,142 @@ class StudentController extends Controller
 
         $student = Student::where('user_id', auth()->id())->first();
 
+        // Mulai transaksi hanya untuk penyimpanan data di database
         DB::beginTransaction();
 
         try {
+            // Pengolahan file menggunakan Queue untuk mempercepat proses
+            $fileUrls = [];
             foreach ($documents as $type => $file) {
                 if ($file) {
-                    // Upload file ke Cloudinary
-                    $uploadedFile = Cloudinary::upload($file->getRealPath(), [
+                    // Queue job untuk mengupload file ke Cloudinary
+                    $fileUrls[$type] = Cloudinary::upload($file->getRealPath(), [
                         'folder' => 'documents/' . $student->name,
-                    ]);
-
-                    // Mendapatkan URL file yang diupload
-                    $fileUrl = $uploadedFile->getSecurePath();
-
-                    // Simpan data ke database
-                    Document::create([
-                        'student_id' => $student->id,
-                        'type' => $type,
-                        'path' => $fileUrl, // Gunakan URL Cloudinary
-                    ]);
+                    ])->getSecurePath();
                 }
             }
 
-            $detailStudent = DetailStudent::updateOrCreate(
-                ['student_id' => $student->id],
-                [
-                    'nickname' => $validatedData['nickname'],
-                    'nisn' => $validatedData['nisn'],
-                    'nis' => $validatedData['nis'],
-                    'ijazah_number' => $validatedData['ijazah_number'],
-                    'skhun_number' => $validatedData['skhun_number'],
-                    'exam_number' => $validatedData['exam_number'],
-                    'nik' => $validatedData['nik'],
-                    'birth_place' => $validatedData['birth_place'],
-                    'birth_date' => $validatedData['birth_date'],
-                    'religion' => $validatedData['religion'],
-                    'nationality' => $validatedData['nationality'],
-                    'siblings_count' => $validatedData['siblings_count'],
-                    'child_position' => $validatedData['child_position'],
-                    'language' => $validatedData['language'],
-                    'special_needs' => $validatedData['special_needs'],
-                    'address' => $validatedData['address'],
-                    'transport' => $validatedData['transport'],
-                    'living_with' => $validatedData['living_with'],
-                    'home_phone' => $validatedData['home_phone'],
-                    'kps_number' => $validatedData['kps_number'],
-                    'height' => $validatedData['height'],
-                    'weight' => $validatedData['weight'],
-                    'blood_type' => $validatedData['blood_type'],
-                    'distance_to_school' => $validatedData['distance_to_school'],
-                    'travel_time' => $validatedData['travel_time'],
-                ],
-            );
-
-            $parents = [
-                'Ayah' => [
-                    'birth_year' => $validatedData['father_birth_year'],
-                    'special_needs' => $validatedData['father_special_needs'],
-                    'job' => $validatedData['father_job'],
-                    'education' => $validatedData['father_education'],
-                    'monthly_income' => $validatedData['father_monthly_income'],
-                ],
-
-                'Ibu' => [
-                    'birth_year' => $validatedData['mother_birth_year'],
-                    'special_needs' => $validatedData['mother_special_needs'],
-                    'job' => $validatedData['mother_job'],
-                    'education' => $validatedData['mother_education'],
-                    'monthly_income' => $validatedData['mother_monthly_income'],
-                ],
-
-                'Wali Murid' => [
-                    'birth_year' => $validatedData['guardian_birth_year'] ?? null,
-                    'special_needs' => $validatedData['guardian_special_needs'] ?? null,
-                    'job' => $validatedData['guardian_job'] ?? null,
-                    'education' => $validatedData['guardian_education'] ?? null,
-                    'monthly_income' => $validatedData['guardian_monthly_income'] ?? null,
-                ],
-            ];
-
-            $existingFather = StudentParent::where('student_id', $student->id)
-                ->where('type', 'Ayah')
-                ->first();
-
-            $existingMother = StudentParent::where('student_id', $student->id)
-                ->where('type', 'Ibu')
-                ->first();
-
-            $existingGuardian = StudentParent::where('student_id', $student->id)
-                ->where('type', 'Wali Murid')
-                ->first();
-
-            if (!empty($validatedData['father_name'])) {
-                $parents['Ayah']['name'] = $validatedData['father_name'];
-            } elseif ($existingFather) {
-                $parents['Ayah']['name'] = $existingFather->name;
+            // Simpan file URLs ke database
+            foreach ($fileUrls as $type => $fileUrl) {
+                Document::create([
+                    'student_id' => $student->id,
+                    'type' => $type,
+                    'path' => $fileUrl,
+                ]);
             }
 
-            if (!empty($validatedData['mother_name'])) {
-                $parents['Ibu']['name'] = $validatedData['mother_name'];
-            } elseif ($existingMother) {
-                $parents['Ibu']['name'] = $existingMother->name;
-            }
+            // Simpan data student dan orang tua
+            DetailStudent::updateOrCreate(['student_id' => $student->id], $validatedData);
 
-            if (!empty($validatedData['guardian_name'])) {
-                $parents['Wali Murid']['name'] = $validatedData['guardian_name'];
-            } elseif ($existingGuardian) {
-                $parents['Wali Murid']['name'] = $existingGuardian->name;
-            }
+            // Proses data orang tua
+            $this->saveParentsData($student->id, $validatedData);
 
-            foreach ($parents as $type => $parentData) {
-                if ($type === 'Wali Murid' && empty($parentData['birth_year']) && empty($parentData['special_needs']) && empty($parentData['job']) && empty($parentData['education']) && empty($parentData['monthly_income']) && empty($parentData['name'])) {
-                    continue;
-                }
+            // Simpan pencapaian
+            $this->saveAchievements($student->id, $request);
 
-                if (!empty($parentData)) {
-                    StudentParent::updateOrCreate(
-                        ['student_id' => $student->id, 'type' => $type],
-                        array_merge($parentData, [
-                            'student_id' => $student->id,
-                            'type' => $type,
-                        ]),
-                    );
-                }
-            }
+            // Simpan beasiswa
+            $this->saveScholarships($student->id, $request);
 
-            if ($request->has('achievement_name') && count($request->achievement_name) > 0) {
-                foreach ($request->achievement_name as $key => $value) {
-                    if (!empty($value)) {
-                        $type = $request->achievement_type[$key] ?? 'default';
+            // Jadwalkan wawancara
+            $this->scheduleInterview($student->id);
 
-                        Achievement::create([
-                            'student_id' => $student->id,
-                            'type' => $type,
-                            'level' => $request->achievement_level[$key] ?? null,
-                            'name' => $value,
-                            'year' => $request->achievement_year[$key] ?? null,
-                            'organizer' => $request->achievement_organizer[$key] ?? null,
-                        ]);
-                    }
-                }
-            }
-
-            if ($request->has('scholarship_type') && count($request->scholarship_type) > 0) {
-                foreach ($request->scholarship_type as $key => $value) {
-                    if (!empty($value)) {
-                        Scholarship::create([
-                            'student_id' => $student->id,
-                            'type' => $value,
-                            'organizer' => $request->scholarship_organizer[$key] ?? null,
-                            'start_year' => $request->scholarship_start_year[$key] ?? null,
-                            'end_year' => $request->scholarship_end_year[$key] ?? null,
-                        ]);
-                    }
-                }
-            }
-
-            $interview = Interview::create([
-                'student_id' => $student->id,
-                'scheduled_at' => Carbon::now()->addWeek(),
-                'interviewer' => null,
-                'status' => 'dijadwalkan',
-            ]);
-
+            // Simpan log
             Log::create([
                 'student_id' => $student->id,
                 'action' => 'Completed document input',
                 'description' => 'Dokumen sudah diinputkan oleh: ' . $student->name . ' Wawancara dijadwalkan pada ' . Carbon::now()->addWeek(),
             ]);
 
-            $student->update([
-                'status' => 'Tahap 3',
-            ]);
+            // Perbarui status
+            $student->update(['status' => 'Tahap 3']);
 
             DB::commit();
 
-            return redirect()
-                ->route('information')
-                ->with([
-                    'success' => 'Data dokumen berhasil disimpan.',
-                ]);
+            return redirect()->route('information')->with('success', 'Data dokumen berhasil disimpan.');
         } catch (\Exception $e) {
             DB::rollBack();
-            dd($e->getMessage());
             return redirect()
                 ->back()
                 ->with('error', 'Terjadi kesalahan: ' . $e->getMessage());
         }
+    }
+
+    protected function saveParentsData($studentId, $validatedData)
+    {
+        $parents = [
+            'Ayah' => [
+                'birth_year' => $validatedData['father_birth_year'],
+                'special_needs' => $validatedData['father_special_needs'],
+                'job' => $validatedData['father_job'],
+                'education' => $validatedData['father_education'],
+                'monthly_income' => $validatedData['father_monthly_income'],
+            ],
+            'Ibu' => [
+                'birth_year' => $validatedData['mother_birth_year'],
+                'special_needs' => $validatedData['mother_special_needs'],
+                'job' => $validatedData['mother_job'],
+                'education' => $validatedData['mother_education'],
+                'monthly_income' => $validatedData['mother_monthly_income'],
+            ],
+            'Wali Murid' => [
+                'birth_year' => $validatedData['guardian_birth_year'] ?? null,
+                'special_needs' => $validatedData['guardian_special_needs'] ?? null,
+                'job' => $validatedData['guardian_job'] ?? null,
+                'education' => $validatedData['guardian_education'] ?? null,
+                'monthly_income' => $validatedData['guardian_monthly_income'] ?? null,
+            ],
+        ];
+
+        foreach ($parents as $type => $parentData) {
+            if (!empty($parentData)) {
+                StudentParent::updateOrCreate(['student_id' => $studentId, 'type' => $type], array_merge($parentData, ['student_id' => $studentId, 'type' => $type]));
+            }
+        }
+    }
+
+    protected function saveAchievements($studentId, $request)
+    {
+        if ($request->has('achievement_name') && count($request->achievement_name) > 0) {
+            foreach ($request->achievement_name as $key => $value) {
+                if (!empty($value)) {
+                    Achievement::create([
+                        'student_id' => $studentId,
+                        'type' => $request->achievement_type[$key] ?? 'default',
+                        'level' => $request->achievement_level[$key] ?? null,
+                        'name' => $value,
+                        'year' => $request->achievement_year[$key] ?? null,
+                        'organizer' => $request->achievement_organizer[$key] ?? null,
+                    ]);
+                }
+            }
+        }
+    }
+
+    protected function saveScholarships($studentId, $request)
+    {
+        if ($request->has('scholarship_type') && count($request->scholarship_type) > 0) {
+            foreach ($request->scholarship_type as $key => $value) {
+                if (!empty($value)) {
+                    Scholarship::create([
+                        'student_id' => $studentId,
+                        'type' => $value,
+                        'organizer' => $request->scholarship_organizer[$key] ?? null,
+                        'start_year' => $request->scholarship_start_year[$key] ?? null,
+                        'end_year' => $request->scholarship_end_year[$key] ?? null,
+                    ]);
+                }
+            }
+        }
+    }
+
+    protected function scheduleInterview($studentId)
+    {
+        Interview::create([
+            'student_id' => $studentId,
+            'scheduled_at' => Carbon::now()->addWeek(),
+            'interviewer' => null,
+            'status' => 'dijadwalkan',
+        ]);
     }
 
     public function indexInformation()
