@@ -68,25 +68,25 @@
                     <div class="w-1/2 gap-6">
                         <div class="mb-4">
                             <label for="name"
-                                class="mb-2 block text-sm font-medium text-gray-900 dark:text-white">Nama
+                                class="mb-2 block text-sm font-medium text-gray-900 -:text-white">Nama
                                 Lengkap</label>
                             <input type="text" id="name" name="name"
-                                class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
+                                class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 -:border-gray-600 -:bg-gray-700 -:text-white -:placeholder-gray-400 -:focus:border-blue-500 -:focus:ring-blue-500"
                                 placeholder="Misal: Anton Pargoy" value="{{ $student->name }}" disabled />
                         </div>
                         <div class="mb-4">
                             <label for="email"
-                                class="mb-2 block text-sm font-medium text-gray-900 dark:text-white">Email</label>
+                                class="mb-2 block text-sm font-medium text-gray-900 -:text-white">Email</label>
                             <input type="text" id="email" name="email"
-                                class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
+                                class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 -:border-gray-600 -:bg-gray-700 -:text-white -:placeholder-gray-400 -:focus:border-blue-500 -:focus:ring-blue-500"
                                 placeholder="Misal: pargoy@gmail.com" value="{{ $student->email }}" disabled />
                         </div>
                         <div class="mb-4">
                             <label for="phone"
-                                class="mb-2 block text-sm font-medium text-gray-900 dark:text-white">No.
+                                class="mb-2 block text-sm font-medium text-gray-900 -:text-white">No.
                                 Telepon</label>
                             <input type="tel" id="phone" name="phone"
-                                class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
+                                class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 -:border-gray-600 -:bg-gray-700 -:text-white -:placeholder-gray-400 -:focus:border-blue-500 -:focus:ring-blue-500"
                                 placeholder="Misal: 081234567890" value="{{ $student->phone }}" disabled />
                         </div>
                     </div>

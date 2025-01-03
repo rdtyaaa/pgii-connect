@@ -3,16 +3,16 @@
         Kelola Pengguna
     @endslot
     {{-- <div class="flex-cols mb-4 flex items-center justify-between">
-        <h1 class="text-2xl font-semibold text-gray-800 dark:text-gray-200">User Management</h1> --}}
+        <h1 class="text-2xl font-semibold text-gray-800 -:text-gray-200">User Management</h1> --}}
     {{-- <a href="{{ route('users.create') }}"
-            class="rounded-lg bg-blue-700 px-5 py-2.5 text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+            class="rounded-lg bg-blue-700 px-5 py-2.5 text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 -:bg-blue-600 -:hover:bg-blue-700 -:focus:ring-blue-800">
             Create User
         </a> --}}
     {{-- </div> --}}
 
     <div class="relative overflow-x-auto border shadow sm:rounded-lg">
-        <table class="w-full text-left text-sm text-gray-500 dark:text-gray-400 rtl:text-right">
-            <thead class="border-b bg-gray-50 text-xs uppercase text-gray-700 dark:bg-gray-700 dark:text-gray-400">
+        <table class="w-full text-left text-sm text-gray-500 -:text-gray-400 rtl:text-right">
+            <thead class="border-b bg-gray-50 text-xs uppercase text-gray-700 -:bg-gray-700 -:text-gray-400">
                 <tr>
                     <th scope="col" class="px-6 py-3">Name</th>
                     <th scope="col" class="px-6 py-3">Email</th>
@@ -24,12 +24,12 @@
             <tbody>
                 @foreach ($users as $user)
                     <tr
-                        class="border-b odd:bg-white even:bg-gray-50 dark:border-gray-700 odd:dark:bg-gray-900 even:dark:bg-gray-800">
+                        class="border-b odd:bg-white even:bg-gray-50 -:border-gray-700 odd:-:bg-gray-900 even:-:bg-gray-800">
                         <td class="px-6 py-4">
                             <img src="{{ $user->avatar }}" alt="Avatar" class="h-10 w-10 rounded-full"
                                 referrerpolicy="no-referrer">
                         </td>
-                        <td class="whitespace-nowrap px-6 py-4 font-medium text-gray-900 dark:text-white">
+                        <td class="whitespace-nowrap px-6 py-4 font-medium text-gray-900 -:text-white">
                             {{ $user->name }}</td>
                         <td class="px-6 py-4">{{ $user->email }}</td>
                         <td class="px-6 py-4">
@@ -43,16 +43,16 @@
                         </td>
                         <td class="space-x-2 px-6 py-4">
                             <a href="{{ route('users.edit', $user->id) }}"
-                                class="text-blue-600 hover:underline dark:text-blue-500">Edit</a>
+                                class="text-blue-600 hover:underline -:text-blue-500">Edit</a>
                             <form action="{{ route('users.destroy', $user->id) }}" method="POST" class="inline">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit"
-                                    class="text-red-600 hover:underline dark:text-red-500">Delete</button>
+                                    class="text-red-600 hover:underline -:text-red-500">Delete</button>
                             </form>
                             {{-- <button data-modal-target="give-access-modal-{{ $user->id }}"
                                 data-modal-toggle="give-access-modal-{{ $user->id }}"
-                                class="text-green-600 hover:underline dark:text-green-500">Give Access</button> --}}
+                                class="text-green-600 hover:underline -:text-green-500">Give Access</button> --}}
                         </td>
                     </tr>
                 @endforeach
@@ -62,10 +62,10 @@
 
     <!-- Pagination -->
     <div class="mt-4 flex flex-col items-center">
-        <span class="text-sm text-gray-700 dark:text-gray-400">
-            Showing <span class="font-semibold text-gray-900 dark:text-white">{{ $users->firstItem() }}</span> to <span
-                class="font-semibold text-gray-900 dark:text-white">{{ $users->lastItem() }}</span> of <span
-                class="font-semibold text-gray-900 dark:text-white">{{ $users->total() }}</span> Entries
+        <span class="text-sm text-gray-700 -:text-gray-400">
+            Showing <span class="font-semibold text-gray-900 -:text-white">{{ $users->firstItem() }}</span> to <span
+                class="font-semibold text-gray-900 -:text-white">{{ $users->lastItem() }}</span> of <span
+                class="font-semibold text-gray-900 -:text-white">{{ $users->total() }}</span> Entries
         </span>
 
         <nav aria-label="Page navigation example" class="mt-2">
@@ -73,7 +73,7 @@
                 <!-- Previous Button -->
                 <li>
                     <a href="{{ $users->previousPageUrl() }}"
-                        class="ms-0 flex h-8 items-center justify-center rounded-s-lg border border-e-0 border-gray-300 bg-white px-3 leading-tight text-gray-500 hover:bg-gray-100 hover:text-gray-700 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
+                        class="ms-0 flex h-8 items-center justify-center rounded-s-lg border border-e-0 border-gray-300 bg-white px-3 leading-tight text-gray-500 hover:bg-gray-100 hover:text-gray-700 -:border-gray-700 -:bg-gray-800 -:text-gray-400 -:hover:bg-gray-700 -:hover:text-white">
                         <span class="sr-only">Previous</span>
                         <svg class="h-2.5 w-2.5 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                             fill="none" viewBox="0 0 6 10">
@@ -87,14 +87,14 @@
                 @foreach ($users->links()->elements[0] as $page => $url)
                     <li>
                         <a href="{{ $url }}"
-                            class="flex h-8 items-center justify-center border border-gray-300 bg-white px-3 leading-tight text-gray-500 hover:bg-gray-100 hover:text-gray-700 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">{{ $page }}</a>
+                            class="flex h-8 items-center justify-center border border-gray-300 bg-white px-3 leading-tight text-gray-500 hover:bg-gray-100 hover:text-gray-700 -:border-gray-700 -:bg-gray-800 -:text-gray-400 -:hover:bg-gray-700 -:hover:text-white">{{ $page }}</a>
                     </li>
                 @endforeach
 
                 <!-- Next Button -->
                 <li>
                     <a href="{{ $users->nextPageUrl() }}"
-                        class="flex h-8 items-center justify-center rounded-e-lg border border-gray-300 bg-white px-3 leading-tight text-gray-500 hover:bg-gray-100 hover:text-gray-700 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
+                        class="flex h-8 items-center justify-center rounded-e-lg border border-gray-300 bg-white px-3 leading-tight text-gray-500 hover:bg-gray-100 hover:text-gray-700 -:border-gray-700 -:bg-gray-800 -:text-gray-400 -:hover:bg-gray-700 -:hover:text-white">
                         <span class="sr-only">Next</span>
                         <svg class="h-2.5 w-2.5 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                             fill="none" viewBox="0 0 6 10">
@@ -112,11 +112,11 @@
         <div id="give-access-modal-{{ $user->id }}" tabindex="-1" aria-hidden="true"
             class="fixed left-0 right-0 top-0 z-50 hidden h-[calc(100%-1rem)] max-h-full w-full items-center justify-center overflow-y-auto overflow-x-hidden md:inset-0">
             <div class="relative max-h-full w-full max-w-md p-4">
-                <div class="relative rounded-lg bg-white shadow dark:bg-gray-700">
-                    <div class="flex items-center justify-between rounded-t border-b p-4 dark:border-gray-600 md:p-5">
-                        <h3 class="text-xl font-semibold text-gray-900 dark:text-white">Confirm Give Access</h3>
+                <div class="relative rounded-lg bg-white shadow -:bg-gray-700">
+                    <div class="flex items-center justify-between rounded-t border-b p-4 -:border-gray-600 md:p-5">
+                        <h3 class="text-xl font-semibold text-gray-900 -:text-white">Confirm Give Access</h3>
                         <button type="button"
-                            class="h-8 w-8 rounded-lg bg-transparent text-sm text-gray-400 hover:bg-gray-200 hover:text-gray-900 dark:hover:bg-gray-600 dark:hover:text-white"
+                            class="h-8 w-8 rounded-lg bg-transparent text-sm text-gray-400 hover:bg-gray-200 hover:text-gray-900 -:hover:bg-gray-600 -:hover:text-white"
                             data-modal-hide="give-access-modal-{{ $user->id }}">
                             <svg class="h-3 w-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
                                 viewBox="0 0 14 14">
@@ -131,13 +131,13 @@
                         @csrf
                         <div>
                             <label for="password-{{ $user->id }}"
-                                class="mb-2 block text-sm font-medium text-gray-900 dark:text-white">Password</label>
+                                class="mb-2 block text-sm font-medium text-gray-900 -:text-white">Password</label>
                             <input type="password" name="password" id="password-{{ $user->id }}"
-                                class="w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-500 dark:bg-gray-600 dark:text-white"
+                                class="w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 -:border-gray-500 -:bg-gray-600 -:text-white"
                                 required>
                         </div>
                         <button type="submit"
-                            class="w-full rounded-lg bg-blue-700 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Confirm</button>
+                            class="w-full rounded-lg bg-blue-700 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 -:bg-blue-600 -:hover:bg-blue-700 -:focus:ring-blue-800">Confirm</button>
                     </form>
                 </div>
             </div>

@@ -4,22 +4,22 @@
     @endslot
     @if (session('status'))
         @if (session('status') == 'success')
-            <div class="mb-4 rounded-lg bg-green-50 p-4 text-sm text-green-800 dark:bg-gray-800 dark:text-green-400"
+            <div class="mb-4 rounded-lg bg-green-50 p-4 text-sm text-green-800 -:bg-gray-800 -:text-green-400"
                 role="alert">
                 <span class="font-medium">Success alert!</span> {{ session('message') }}
             </div>
         @elseif (session('status') == 'error')
-            <div class="mb-4 rounded-lg bg-red-50 p-4 text-sm text-red-800 dark:bg-gray-800 dark:text-red-400"
+            <div class="mb-4 rounded-lg bg-red-50 p-4 text-sm text-red-800 -:bg-gray-800 -:text-red-400"
                 role="alert">
                 <span class="font-medium">Error alert!</span> {{ session('message') }}
             </div>
         @elseif (session('status') == 'warning')
-            <div class="mb-4 rounded-lg bg-yellow-50 p-4 text-sm text-yellow-800 dark:bg-gray-800 dark:text-yellow-300"
+            <div class="mb-4 rounded-lg bg-yellow-50 p-4 text-sm text-yellow-800 -:bg-gray-800 -:text-yellow-300"
                 role="alert">
                 <span class="font-medium">Warning alert!</span> {{ session('message') }}
             </div>
         @else
-            <div class="mb-4 rounded-lg bg-blue-50 p-4 text-sm text-blue-800 dark:bg-gray-800 dark:text-blue-400"
+            <div class="mb-4 rounded-lg bg-blue-50 p-4 text-sm text-blue-800 -:bg-gray-800 -:text-blue-400"
                 role="alert">
                 <span class="font-medium">Info alert!</span> {{ session('message') }}
             </div>

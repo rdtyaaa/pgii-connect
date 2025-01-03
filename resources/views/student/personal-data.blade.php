@@ -47,10 +47,10 @@
                     <div class="mb-6 grid gap-6 md:grid-cols-2">
                         <div>
                             <label for="name"
-                                class="mb-2 block text-sm font-medium text-gray-900 dark:text-white">Nama
+                                class="mb-2 block text-sm font-medium text-gray-900 -:text-white">Nama
                                 Lengkap</label>
                             <input type="text" id="name" name="name"
-                                class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
+                                class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 -:border-gray-600 -:bg-gray-700 -:text-white -:placeholder-gray-400 -:focus:border-blue-500 -:focus:ring-blue-500"
                                 placeholder="Misal: Anton Pargoy" value="{{ old('name') }}" required />
                             @error('name')
                                 <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
@@ -61,10 +61,10 @@
 
                         <div>
                             <label for="parent_name"
-                                class="mb-2 block text-sm font-medium text-gray-900 dark:text-white">Nama Wali
+                                class="mb-2 block text-sm font-medium text-gray-900 -:text-white">Nama Wali
                                 Murid</label>
                             <input type="text" id="parent_name" name="parent_name"
-                                class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
+                                class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 -:border-gray-600 -:bg-gray-700 -:text-white -:placeholder-gray-400 -:focus:border-blue-500 -:focus:ring-blue-500"
                                 placeholder="Misal: Supritno" value="{{ old('parent_name') }}" required />
                             @error('parent_name')
                                 <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
@@ -72,9 +72,9 @@
                         </div>
                         <div>
                             <label for="email"
-                                class="mb-2 block text-sm font-medium text-gray-900 dark:text-white">Email</label>
+                                class="mb-2 block text-sm font-medium text-gray-900 -:text-white">Email</label>
                             <input type="text" id="email" name="email"
-                                class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
+                                class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 -:border-gray-600 -:bg-gray-700 -:text-white -:placeholder-gray-400 -:focus:border-blue-500 -:focus:ring-blue-500"
                                 placeholder="Misal: pargoy@gmail.com" value="{{ Auth::user()->email }}" readonly />
                             @error('email')
                                 <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
@@ -82,10 +82,10 @@
                         </div>
                         <div>
                             <label for="parent_email"
-                                class="mb-2 block text-sm font-medium text-gray-900 dark:text-white">Email Wali
+                                class="mb-2 block text-sm font-medium text-gray-900 -:text-white">Email Wali
                                 Murid</label>
                             <input type="text" id="parent_email" name="parent_email"
-                                class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
+                                class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 -:border-gray-600 -:bg-gray-700 -:text-white -:placeholder-gray-400 -:focus:border-blue-500 -:focus:ring-blue-500"
                                 placeholder="Misal: supritno@gmail.com" value="{{ old('parent_email') }}" required />
                             @error('parent_email')
                                 <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
@@ -93,10 +93,10 @@
                         </div>
                         <div>
                             <label for="phone"
-                                class="mb-2 block text-sm font-medium text-gray-900 dark:text-white">No.
+                                class="mb-2 block text-sm font-medium text-gray-900 -:text-white">No.
                                 Telepon</label>
                             <input type="tel" id="phone" name="phone"
-                                class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
+                                class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 -:border-gray-600 -:bg-gray-700 -:text-white -:placeholder-gray-400 -:focus:border-blue-500 -:focus:ring-blue-500"
                                 placeholder="Misal: 081234567890" value="{{ old('phone') }}" required />
                             @error('phone')
                                 <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
@@ -104,10 +104,10 @@
                         </div>
                         <div>
                             <label for="parent_phone"
-                                class="mb-2 block text-sm font-medium text-gray-900 dark:text-white">No. Telepon
+                                class="mb-2 block text-sm font-medium text-gray-900 -:text-white">No. Telepon
                                 Wali Murid</label>
                             <input type="tel" id="parent_phone" name="parent_phone"
-                                class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
+                                class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 -:border-gray-600 -:bg-gray-700 -:text-white -:placeholder-gray-400 -:focus:border-blue-500 -:focus:ring-blue-500"
                                 placeholder="Misal: 081234567890" value="{{ old('parent_phone') }}" required />
                             @error('parent_phone')
                                 <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
@@ -115,10 +115,10 @@
                         </div>
                         <div>
                             <label for="school_origin"
-                                class="mb-2 block text-sm font-medium text-gray-900 dark:text-white">Asal
+                                class="mb-2 block text-sm font-medium text-gray-900 -:text-white">Asal
                                 Sekolah</label>
                             <input type="text" id="school_origin" name="school_origin"
-                                class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
+                                class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 -:border-gray-600 -:bg-gray-700 -:text-white -:placeholder-gray-400 -:focus:border-blue-500 -:focus:ring-blue-500"
                                 placeholder="Misal: SMA 1 Kota Bandung" value="{{ old('school_origin') }}" required />
                             @error('school_origin')
                                 <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
@@ -131,10 +131,10 @@
                         </x-select-field>
                         <div>
                             <label for="gender"
-                                class="mb-2 block text-sm font-medium text-gray-900 dark:text-white">Jenis
+                                class="mb-2 block text-sm font-medium text-gray-900 -:text-white">Jenis
                                 Kelamin</label>
                             <select id="gender" name="gender"
-                                class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
+                                class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 -:border-gray-600 -:bg-gray-700 -:text-white -:placeholder-gray-400 -:focus:border-blue-500 -:focus:ring-blue-500"
                                 value="{{ old('gender') }}" required>
                                 <option selected>Pilih Jenis Kelamin</option>
                                 <option value="M">Laki-Laki</option>
@@ -147,7 +147,7 @@
                     </div>
 
                     <button data-modal-target="popup-modal" data-modal-toggle="popup-modal"
-                        class="block rounded-lg bg-blue-700 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                        class="block rounded-lg bg-blue-700 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 -:bg-blue-600 -:hover:bg-blue-700 -:focus:ring-blue-800"
                         type="button">
                         Submit
                     </button>
@@ -155,9 +155,9 @@
                     <div id="popup-modal" tabindex="-1"
                         class="fixed left-0 right-0 top-0 z-50 hidden h-[calc(100%-1rem)] max-h-full w-full items-center justify-center overflow-y-auto overflow-x-hidden md:inset-0">
                         <div class="relative max-h-full w-full max-w-md p-4">
-                            <div class="relative rounded-lg bg-white shadow dark:bg-gray-700">
+                            <div class="relative rounded-lg bg-white shadow -:bg-gray-700">
                                 <button type="button"
-                                    class="absolute end-2.5 top-3 ms-auto inline-flex h-8 w-8 items-center justify-center rounded-lg bg-transparent text-sm text-gray-400 hover:bg-gray-200 hover:text-gray-900 dark:hover:bg-gray-600 dark:hover:text-white"
+                                    class="absolute end-2.5 top-3 ms-auto inline-flex h-8 w-8 items-center justify-center rounded-lg bg-transparent text-sm text-gray-400 hover:bg-gray-200 hover:text-gray-900 -:hover:bg-gray-600 -:hover:text-white"
                                     data-modal-hide="popup-modal">
                                     <svg class="h-3 w-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                                         fill="none" viewBox="0 0 14 14">
@@ -167,7 +167,7 @@
                                     <span class="sr-only">Close modal</span>
                                 </button>
                                 <div class="p-4 text-center md:p-5">
-                                    <svg class="mx-auto mb-4 h-12 w-12 text-gray-400 dark:text-gray-200"
+                                    <svg class="mx-auto mb-4 h-12 w-12 text-gray-400 -:text-gray-200"
                                         aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
                                         viewBox="0 0 20 20">
                                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
@@ -179,10 +179,10 @@
                                     <p class="mb-6 text-sm font-normal text-gray-400">Data yang diinputkan tidak dapat
                                         diubah nantinya!</p>
                                     <button data-modal-hide="popup-modal" type="button"
-                                        class="ms-3 rounded-lg border border-gray-200 bg-white px-5 py-2.5 text-sm font-medium text-gray-900 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:outline-none focus:ring-4 focus:ring-gray-100 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white dark:focus:ring-gray-700">Tidak,
+                                        class="ms-3 rounded-lg border border-gray-200 bg-white px-5 py-2.5 text-sm font-medium text-gray-900 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:outline-none focus:ring-4 focus:ring-gray-100 -:border-gray-600 -:bg-gray-800 -:text-gray-400 -:hover:bg-gray-700 -:hover:text-white -:focus:ring-gray-700">Tidak,
                                         batalkan</button>
                                     <button data-modal-hide="popup-modal" type="submit"
-                                        class="inline-flex items-center rounded-lg bg-blue-600 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-800">
+                                        class="inline-flex items-center rounded-lg bg-blue-600 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 -:focus:ring-blue-800">
                                         Ya, saya yakin
                                     </button>
                                 </div>
@@ -192,7 +192,7 @@
 
 
                     {{-- <button type="submit"
-                        class="w-full rounded-lg bg-blue-700 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 sm:w-auto">Submit</button> --}}
+                        class="w-full rounded-lg bg-blue-700 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 -:bg-blue-600 -:hover:bg-blue-700 -:focus:ring-blue-800 sm:w-auto">Submit</button> --}}
                 </form>
 
             </div>

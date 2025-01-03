@@ -23,7 +23,7 @@
             theme: {
                 extend: {
                     fontFamily: {
-                        sans: ["Poppins", ...defaultTheme.fontFamily.sans],
+                        sans: ['Poppins', 'sans-serif'],
                     },
                     colors: {
                         clifford: '#da373d',
@@ -32,6 +32,11 @@
             }
         }
     </script>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+    </style>
 
     <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.css" rel="stylesheet" />
 

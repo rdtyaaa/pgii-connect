@@ -43,7 +43,7 @@
                             <div>
                                 <h1 class="mb-4">Rapot SMP Semester 1-5 </h1>
                                 <label for="dropzone-file-1"
-                                    class="file-label relative flex h-64 w-full cursor-pointer flex-col items-center justify-center rounded-lg border-2 border-dashed border-gray-300 bg-gray-50 hover:bg-gray-100 dark:border-gray-600 dark:bg-gray-700 dark:hover:border-gray-500 dark:hover:bg-gray-600 dark:hover:bg-gray-800">
+                                    class="file-label relative flex h-64 w-full cursor-pointer flex-col items-center justify-center rounded-lg border-2 border-dashed border-gray-300 bg-gray-50 hover:bg-gray-100 -:border-gray-600 -:bg-gray-700 -:hover:border-gray-500 -:hover:bg-gray-600 -:hover:bg-gray-800">
                                     <svg id="delete-icon"
                                         class="absolute right-2 top-2 hidden h-[24px] w-[24px] items-end text-red-500"
                                         aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24"
@@ -53,15 +53,15 @@
                                         </path>
                                     </svg>
                                     <div class="file-info flex flex-col items-center justify-center pb-6 pt-5">
-                                        <svg class="mb-4 h-8 w-8 text-gray-500 dark:text-gray-400" aria-hidden="true"
+                                        <svg class="mb-4 h-8 w-8 text-gray-500 -:text-gray-400" aria-hidden="true"
                                             xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
                                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
                                                 stroke-width="2"
                                                 d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2" />
                                         </svg>
-                                        <p class="mb-2 text-sm text-gray-500 dark:text-gray-400"><span
+                                        <p class="mb-2 text-sm text-gray-500 -:text-gray-400"><span
                                                 class="font-semibold">Click to upload</span> or drag and drop</p>
-                                        <p class="text-xs text-gray-500 dark:text-gray-400">SVG, PNG, JPG or GIF
+                                        <p class="text-xs text-gray-500 -:text-gray-400">SVG, PNG, JPG or GIF
                                             (MAX.
                                             800x400px)</p>
                                     </div>
@@ -75,7 +75,7 @@
                             <div>
                                 <h1 class="mb-4">Kartu Keluarga</h1>
                                 <label for="dropzone-file-2"
-                                    class="file-label relative flex h-64 w-full cursor-pointer flex-col items-center justify-center rounded-lg border-2 border-dashed border-gray-300 bg-gray-50 hover:bg-gray-100 dark:border-gray-600 dark:bg-gray-700 dark:hover:border-gray-500 dark:hover:bg-gray-600 dark:hover:bg-gray-800">
+                                    class="file-label relative flex h-64 w-full cursor-pointer flex-col items-center justify-center rounded-lg border-2 border-dashed border-gray-300 bg-gray-50 hover:bg-gray-100 -:border-gray-600 -:bg-gray-700 -:hover:border-gray-500 -:hover:bg-gray-600 -:hover:bg-gray-800">
                                     <svg id="delete-icon"
                                         class="absolute right-2 top-2 hidden h-[24px] w-[24px] items-end text-red-500"
                                         aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24"
@@ -85,15 +85,15 @@
                                         </path>
                                     </svg>
                                     <div class="file-info flex flex-col items-center justify-center pb-6 pt-5">
-                                        <svg class="mb-4 h-8 w-8 text-gray-500 dark:text-gray-400" aria-hidden="true"
+                                        <svg class="mb-4 h-8 w-8 text-gray-500 -:text-gray-400" aria-hidden="true"
                                             xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
                                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
                                                 stroke-width="2"
                                                 d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2" />
                                         </svg>
-                                        <p class="mb-2 text-sm text-gray-500 dark:text-gray-400"><span
+                                        <p class="mb-2 text-sm text-gray-500 -:text-gray-400"><span
                                                 class="font-semibold">Click to upload</span> or drag and drop</p>
-                                        <p class="text-xs text-gray-500 dark:text-gray-400">SVG, PNG, JPG or GIF
+                                        <p class="text-xs text-gray-500 -:text-gray-400">SVG, PNG, JPG or GIF
                                             (MAX.
                                             800x400px)</p>
                                     </div>
@@ -107,7 +107,7 @@
                             <div>
                                 <h1 class="mb-4">Akte Kelahiran</h1>
                                 <label for="dropzone-file-3"
-                                    class="file-label relative flex h-64 w-full cursor-pointer flex-col items-center justify-center rounded-lg border-2 border-dashed border-gray-300 bg-gray-50 hover:bg-gray-100 dark:border-gray-600 dark:bg-gray-700 dark:hover:border-gray-500 dark:hover:bg-gray-600 dark:hover:bg-gray-800">
+                                    class="file-label relative flex h-64 w-full cursor-pointer flex-col items-center justify-center rounded-lg border-2 border-dashed border-gray-300 bg-gray-50 hover:bg-gray-100 -:border-gray-600 -:bg-gray-700 -:hover:border-gray-500 -:hover:bg-gray-600 -:hover:bg-gray-800">
                                     <svg id="delete-icon"
                                         class="absolute right-2 top-2 hidden h-[24px] w-[24px] items-end text-red-500"
                                         aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24"
@@ -117,15 +117,15 @@
                                         </path>
                                     </svg>
                                     <div class="file-info flex flex-col items-center justify-center pb-6 pt-5">
-                                        <svg class="mb-4 h-8 w-8 text-gray-500 dark:text-gray-400" aria-hidden="true"
+                                        <svg class="mb-4 h-8 w-8 text-gray-500 -:text-gray-400" aria-hidden="true"
                                             xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
                                             <path stroke="currentColor" stroke-linecap="round"
                                                 stroke-linejoin="round" stroke-width="2"
                                                 d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2" />
                                         </svg>
-                                        <p class="mb-2 text-sm text-gray-500 dark:text-gray-400"><span
+                                        <p class="mb-2 text-sm text-gray-500 -:text-gray-400"><span
                                                 class="font-semibold">Click to upload</span> or drag and drop</p>
-                                        <p class="text-xs text-gray-500 dark:text-gray-400">SVG, PNG, JPG or GIF
+                                        <p class="text-xs text-gray-500 -:text-gray-400">SVG, PNG, JPG or GIF
                                             (MAX.
                                             800x400px)</p>
                                     </div>
@@ -139,7 +139,7 @@
                             <div>
                                 <h1 class="mb-4">Surat Keterangan Sehat</h1>
                                 <label for="dropzone-file-4"
-                                    class="file-label relative flex h-64 w-full cursor-pointer flex-col items-center justify-center rounded-lg border-2 border-dashed border-gray-300 bg-gray-50 hover:bg-gray-100 dark:border-gray-600 dark:bg-gray-700 dark:hover:border-gray-500 dark:hover:bg-gray-600 dark:hover:bg-gray-800">
+                                    class="file-label relative flex h-64 w-full cursor-pointer flex-col items-center justify-center rounded-lg border-2 border-dashed border-gray-300 bg-gray-50 hover:bg-gray-100 -:border-gray-600 -:bg-gray-700 -:hover:border-gray-500 -:hover:bg-gray-600 -:hover:bg-gray-800">
                                     <svg id="delete-icon"
                                         class="absolute right-2 top-2 hidden h-[24px] w-[24px] items-end text-red-500"
                                         aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24"
@@ -149,15 +149,15 @@
                                         </path>
                                     </svg>
                                     <div class="file-info flex flex-col items-center justify-center pb-6 pt-5">
-                                        <svg class="mb-4 h-8 w-8 text-gray-500 dark:text-gray-400" aria-hidden="true"
+                                        <svg class="mb-4 h-8 w-8 text-gray-500 -:text-gray-400" aria-hidden="true"
                                             xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
                                             <path stroke="currentColor" stroke-linecap="round"
                                                 stroke-linejoin="round" stroke-width="2"
                                                 d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2" />
                                         </svg>
-                                        <p class="mb-2 text-sm text-gray-500 dark:text-gray-400"><span
+                                        <p class="mb-2 text-sm text-gray-500 -:text-gray-400"><span
                                                 class="font-semibold">Click to upload</span> or drag and drop</p>
-                                        <p class="text-xs text-gray-500 dark:text-gray-400">SVG, PNG, JPG or GIF
+                                        <p class="text-xs text-gray-500 -:text-gray-400">SVG, PNG, JPG or GIF
                                             (MAX.
                                             800x400px)</p>
                                     </div>
@@ -208,13 +208,13 @@
                                     placeholder="1234567890123456" :value="old('nik')" req />
 
                                 <div>
-                                    <label class="mb-2 block text-sm font-medium text-gray-900 dark:text-white">
+                                    <label class="mb-2 block text-sm font-medium text-gray-900 -:text-white">
                                         Tempat, Tanggal Lahir
                                     </label>
                                     <div class="grid grid-cols-2 gap-4">
                                         <div>
                                             <input type="text" id="birth_place" name="birth_place"
-                                                class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
+                                                class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 -:border-gray-600 -:bg-gray-700 -:text-white -:placeholder-gray-400 -:focus:border-blue-500 -:focus:ring-blue-500"
                                                 placeholder="Misal: Jakarta" value="{{ old('birth_place') }}"
                                                 required />
                                             @error('birth_place')
@@ -225,7 +225,7 @@
                                         <div class="relative max-w-sm">
                                             <div
                                                 class="pointer-events-none absolute inset-y-0 start-0 flex items-center ps-3.5">
-                                                <svg class="h-4 w-4 text-gray-500 dark:text-gray-400"
+                                                <svg class="h-4 w-4 text-gray-500 -:text-gray-400"
                                                     aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                                                     fill="currentColor" viewBox="0 0 20 20">
                                                     <path
@@ -234,7 +234,7 @@
                                             </div>
                                             <input datepicker id="default-datepicker" name="birth_date"
                                                 type="text"
-                                                class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 ps-10 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
+                                                class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 ps-10 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 -:border-gray-600 -:bg-gray-700 -:text-white -:placeholder-gray-400 -:focus:border-blue-500 -:focus:ring-blue-500"
                                                 placeholder="Select date" required>
                                             @error('birth_date')
                                                 <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
@@ -309,7 +309,7 @@
                     {{-- Halaman 3 --}}
                     <div class="page mb-6" id="page3" data-name="Data Orang Tua" style="display: none;">
                         <!-- Data Ayah -->
-                        <h3 class="mb-4 text-lg font-semibold text-gray-900 dark:text-white">Data Ayah</h3>
+                        <h3 class="mb-4 text-lg font-semibold text-gray-900 -:text-white">Data Ayah</h3>
                         <div class="grid grid-cols-2 gap-6">
                             <x-input-field id="father_name" name="father_name" label="Nama Ayah"
                                 placeholder="Nama Ayah" :value="old('father_name') ?? ($parents->where('type', 'Ayah')->first()->name ?? '')" :disabled="$parents->where('type', 'Ayah')->isNotEmpty()" />
@@ -330,7 +330,7 @@
                         </div>
 
                         <!-- Data Ibu -->
-                        <h3 class="my-4 text-lg font-semibold text-gray-900 dark:text-white">Data Ibu</h3>
+                        <h3 class="my-4 text-lg font-semibold text-gray-900 -:text-white">Data Ibu</h3>
                         <div class="grid grid-cols-2 gap-6">
                             <x-input-field id="mother_name" name="mother_name" label="Nama Ibu"
                                 placeholder="Nama Ibu" :value="old('mother_name') ?? ($parents->where('type', 'Ibu')->first()->name ?? '')" :disabled="$parents->where('type', 'Ibu')->isNotEmpty()" />
@@ -351,7 +351,7 @@
                         </div>
 
                         <!-- Data Wali Murid (Opsional) -->
-                        <h3 class="my-4 text-lg font-semibold text-gray-900 dark:text-white">Data Wali Murid (Opsional)
+                        <h3 class="my-4 text-lg font-semibold text-gray-900 -:text-white">Data Wali Murid (Opsional)
                         </h3>
                         <div class="grid grid-cols-2 gap-6">
                             <x-input-field id="guardian_name" name="guardian_name" label="Nama Wali"
@@ -377,7 +377,7 @@
 
                     <div class="page mb-6" id="page4" data-name="Data Periodik" style="display: none;">
                         <!-- Data Periodik -->
-                        <h3 class="mb-4 text-lg font-semibold text-gray-900 dark:text-white">Data Periodik</h3>
+                        <h3 class="mb-4 text-lg font-semibold text-gray-900 -:text-white">Data Periodik</h3>
                         <div class="grid grid-cols-2 gap-6">
                             <x-input-field id="height" name="height" label="Tinggi Badan (cm)"
                                 placeholder="Contoh: 170" :value="old('height')" type="number" req />
@@ -399,7 +399,7 @@
                         </div>
 
                         <!-- Data Prestasi -->
-                        <h3 class="my-4 text-lg font-semibold text-gray-900 dark:text-white">Data Prestasi</h3>
+                        <h3 class="my-4 text-lg font-semibold text-gray-900 -:text-white">Data Prestasi</h3>
                         <div>
                             <div id="achievement-container">
                                 <div class="achievement-item my-4 grid grid-cols-2 gap-6">
@@ -423,7 +423,7 @@
                         </button>
 
                         <!-- Data Beasiswa -->
-                        <h3 class="my-4 text-lg font-semibold text-gray-900 dark:text-white">Data Beasiswa</h3>
+                        <h3 class="my-4 text-lg font-semibold text-gray-900 -:text-white">Data Beasiswa</h3>
                         <div>
                             <div id="scholarship-container">
                                 <div class="scholarship-item my-4 grid grid-cols-2 gap-6">
@@ -449,14 +449,14 @@
 
                     <div id="navigationButtons" class="flex justify-between">
                         <button type="button" id="prevButton" onclick="prevPage()" style="display: none;"
-                            class="w-full rounded-lg bg-gray-700 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-gray-800 focus:outline-none focus:ring-4 focus:ring-gray-300 dark:bg-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-800 sm:w-auto"></button>
+                            class="w-full rounded-lg bg-gray-700 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-gray-800 focus:outline-none focus:ring-4 focus:ring-gray-300 -:bg-gray-600 -:hover:bg-gray-700 -:focus:ring-gray-800 sm:w-auto"></button>
                         <button type="button" id="nextButton" onclick="nextPage()"
-                            class="ms-auto w-full rounded-lg bg-green-700 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-green-800 focus:outline-none focus:ring-4 focus:ring-green-300 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800 sm:w-auto"></button>
+                            class="ms-auto w-full rounded-lg bg-green-700 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-green-800 focus:outline-none focus:ring-4 focus:ring-green-300 -:bg-green-600 -:hover:bg-green-700 -:focus:ring-green-800 sm:w-auto"></button>
                         {{-- <button type="submit" id="submitButton" style="display: none;"
-                            class="w-full rounded-lg bg-blue-700 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 sm:w-auto">Submit</button> --}}
+                            class="w-full rounded-lg bg-blue-700 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 -:bg-blue-600 -:hover:bg-blue-700 -:focus:ring-blue-800 sm:w-auto">Submit</button> --}}
                         <button id="submitButton" style="display: none;" data-modal-target="popup-modal"
                             data-modal-toggle="popup-modal"
-                            class="block rounded-lg bg-blue-700 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                            class="block rounded-lg bg-blue-700 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 -:bg-blue-600 -:hover:bg-blue-700 -:focus:ring-blue-800"
                             type="button">
                             Submit
                         </button>
@@ -465,9 +465,9 @@
                     <div id="popup-modal" tabindex="-1"
                         class="fixed left-0 right-0 top-0 z-50 hidden h-[calc(100%-1rem)] max-h-full w-full items-center justify-center overflow-y-auto overflow-x-hidden md:inset-0">
                         <div class="relative max-h-full w-full max-w-md p-4">
-                            <div class="relative rounded-lg bg-white shadow dark:bg-gray-700">
+                            <div class="relative rounded-lg bg-white shadow -:bg-gray-700">
                                 <button type="button"
-                                    class="absolute end-2.5 top-3 ms-auto inline-flex h-8 w-8 items-center justify-center rounded-lg bg-transparent text-sm text-gray-400 hover:bg-gray-200 hover:text-gray-900 dark:hover:bg-gray-600 dark:hover:text-white"
+                                    class="absolute end-2.5 top-3 ms-auto inline-flex h-8 w-8 items-center justify-center rounded-lg bg-transparent text-sm text-gray-400 hover:bg-gray-200 hover:text-gray-900 -:hover:bg-gray-600 -:hover:text-white"
                                     data-modal-hide="popup-modal">
                                     <svg class="h-3 w-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                                         fill="none" viewBox="0 0 14 14">
@@ -477,7 +477,7 @@
                                     <span class="sr-only">Close modal</span>
                                 </button>
                                 <div class="p-4 text-center md:p-5">
-                                    <svg class="mx-auto mb-4 h-12 w-12 text-gray-400 dark:text-gray-200"
+                                    <svg class="mx-auto mb-4 h-12 w-12 text-gray-400 -:text-gray-200"
                                         aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
                                         viewBox="0 0 20 20">
                                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
@@ -489,10 +489,10 @@
                                     <p class="mb-6 text-sm font-normal text-gray-400">Data yang diinputkan tidak dapat
                                         diubah nantinya!</p>
                                     <button data-modal-hide="popup-modal" type="button"
-                                        class="ms-3 rounded-lg border border-gray-200 bg-white px-5 py-2.5 text-sm font-medium text-gray-900 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:outline-none focus:ring-4 focus:ring-gray-100 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white dark:focus:ring-gray-700">Tidak,
+                                        class="ms-3 rounded-lg border border-gray-200 bg-white px-5 py-2.5 text-sm font-medium text-gray-900 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:outline-none focus:ring-4 focus:ring-gray-100 -:border-gray-600 -:bg-gray-800 -:text-gray-400 -:hover:bg-gray-700 -:hover:text-white -:focus:ring-gray-700">Tidak,
                                         batalkan</button>
                                     <button data-modal-hide="popup-modal" id="submitButtonModal" type="submit"
-                                        class="inline-flex items-center rounded-lg bg-blue-600 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-800">
+                                        class="inline-flex items-center rounded-lg bg-blue-600 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 -:focus:ring-blue-800">
                                         Ya, saya yakin
                                     </button>
                                 </div>
@@ -603,7 +603,7 @@
                         <svg class="mb-4 h-[96px] w-[96px] text-gray-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
                             <path fill-rule="evenodd" d="M9 2.221V7H4.221a2 2 0 0 1 .365-.5L8.5 2.586A2 2 0 0 1 9 2.22ZM11 2v5a2 2 0 0 1-2 2H4v11a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2h-7Z" clip-rule="evenodd" />
                         </svg>
-                        <p class="mb-2 text-sm text-gray-500 dark:text-gray-400"><span class="font-semibold">${fileName}</span></p>
+                        <p class="mb-2 text-sm text-gray-500 -:text-gray-400"><span class="font-semibold">${fileName}</span></p>
                     `;
 
                     let deleteIcon = fileLabel.querySelector('#delete-icon');
@@ -629,11 +629,11 @@
         function resetFileLabel(fileLabel, inputFile) {
             const fileInfo = fileLabel.querySelector('.file-info');
             fileInfo.innerHTML = `
-                <svg class="mb-4 h-8 w-8 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
+                <svg class="mb-4 h-8 w-8 text-gray-500 -:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2" />
                 </svg>
-                <p class="mb-2 text-sm text-gray-500 dark:text-gray-400"><span class="font-semibold">Click to upload</span> or drag and drop</p>
-                <p class="text-xs text-gray-500 dark:text-gray-400">SVG, PNG, JPG or GIF (MAX. 800x400px)</p>
+                <p class="mb-2 text-sm text-gray-500 -:text-gray-400"><span class="font-semibold">Click to upload</span> or drag and drop</p>
+                <p class="text-xs text-gray-500 -:text-gray-400">SVG, PNG, JPG or GIF (MAX. 800x400px)</p>
             `;
 
             // Hapus ikon delete jika ada

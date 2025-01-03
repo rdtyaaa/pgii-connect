@@ -45,35 +45,35 @@
                 <h1 class="mb-4 text-xl font-semibold">Peserta</h1>
                 <div class="mb-6 grid gap-6 md:grid-cols-2">
                     <div class="mb-4">
-                        <label for="name" class="mb-2 block text-sm font-medium text-gray-900 dark:text-white">Nama
+                        <label for="name" class="mb-2 block text-sm font-medium text-gray-900 -:text-white">Nama
                             Lengkap</label>
                         <input type="text" id="name" name="name"
-                            class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
+                            class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 -:border-gray-600 -:bg-gray-700 -:text-white -:placeholder-gray-400 -:focus:border-blue-500 -:focus:ring-blue-500"
                             placeholder="Misal: Anton Pargoy" value="{{ $student->name }}" disabled />
                     </div>
                     <div class="mb-4">
                         <label for="email"
-                            class="mb-2 block text-sm font-medium text-gray-900 dark:text-white">Email</label>
+                            class="mb-2 block text-sm font-medium text-gray-900 -:text-white">Email</label>
                         <input type="text" id="email" name="email"
-                            class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
+                            class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 -:border-gray-600 -:bg-gray-700 -:text-white -:placeholder-gray-400 -:focus:border-blue-500 -:focus:ring-blue-500"
                             placeholder="Misal: pargoy@gmail.com" value="{{ $student->email }}" disabled />
                     </div>
                     <div class="mb-4">
-                        <label for="phone" class="mb-2 block text-sm font-medium text-gray-900 dark:text-white">No.
+                        <label for="phone" class="mb-2 block text-sm font-medium text-gray-900 -:text-white">No.
                             Telepon</label>
                         <input type="tel" id="phone" name="phone"
-                            class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
+                            class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 -:border-gray-600 -:bg-gray-700 -:text-white -:placeholder-gray-400 -:focus:border-blue-500 -:focus:ring-blue-500"
                             placeholder="Misal: 081234567890" value="{{ $student->phone }}" disabled />
                     </div>
                     <div class="mb-4">
                         <label for="status"
-                            class="mb-2 block text-sm font-medium text-gray-900 dark:text-white">Status
+                            class="mb-2 block text-sm font-medium text-gray-900 -:text-white">Status
                             Wawancara</label>
                         <input type="text" id="status" name="status"
                             class="@if (strtolower($scheduledInterview->status) === 'ditolak') bg-red-300
                             @elseif(strtolower($scheduledInterview->status) === 'diterima') bg-green-300
                             @elseif(strtolower($scheduledInterview->status) === 'dijadwalkan') bg-yellow-300
-                            @else bg-gray-300 @endif block w-full rounded-lg border p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:focus:border-blue-500 dark:focus:ring-blue-500"
+                            @else bg-gray-300 @endif block w-full rounded-lg border p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 -:border-gray-600 -:focus:border-blue-500 -:focus:ring-blue-500"
                             value="{{ ucwords(strtolower($scheduledInterview->status)) }}" disabled />
                     </div>
 
@@ -84,7 +84,7 @@
                         <div id="alert-1"
                             class="mb-4 flex items-center rounded-lg border border-blue-300 bg-blue-50 p-4 text-sm text-blue-800"
                             role="alert">
-                            <svg class="mr-2 h-6 w-6 text-blue-800 dark:text-white" aria-hidden="true"
+                            <svg class="mr-2 h-6 w-6 text-blue-800 -:text-white" aria-hidden="true"
                                 xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
                                 viewBox="0 0 24 24">
                                 <path fill-rule="evenodd"

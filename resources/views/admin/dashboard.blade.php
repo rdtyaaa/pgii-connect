@@ -4,24 +4,24 @@
     @endslot
     <div class="grid h-fit w-full grid-cols-4 gap-4 px-8 pb-24">
         <!-- Total Pendaftar -->
-        <div class="rounded-lg border border-gray-200 bg-white p-6 dark:border-gray-700 dark:bg-gray-800">
-            <svg class="mb-3 h-7 w-7 text-gray-500 dark:text-gray-400" aria-hidden="true"
+        <div class="rounded-lg border border-gray-200 bg-white p-6 -:border-gray-700 -:bg-gray-800">
+            <svg class="mb-3 h-7 w-7 text-gray-500 -:text-gray-400" aria-hidden="true"
                 xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
                 <path
                     d="M4.5 6.375a4.125 4.125 0 1 1 8.25 0 4.125 4.125 0 0 1-8.25 0ZM14.25 8.625a3.375 3.375 0 1 1 6.75 0 3.375 3.375 0 0 1-6.75 0ZM1.5 19.125a7.125 7.125 0 0 1 14.25 0v.003l-.001.119a.75.75 0 0 1-.363.63 13.067 13.067 0 0 1-6.761 1.873c-2.472 0-4.786-.684-6.76-1.873a.75.75 0 0 1-.364-.63l-.001-.122ZM17.25 19.128l-.001.144a2.25 2.25 0 0 1-.233.96 10.088 10.088 0 0 0 5.06-1.01.75.75 0 0 0 .42-.643 4.875 4.875 0 0 0-6.957-4.611 8.586 8.586 0 0 1 1.71 5.157v.003Z" />
             </svg>
 
             <a href="#">
-                <h5 class="mb-2 text-2xl font-semibold tracking-tight text-gray-900 dark:text-white">
+                <h5 class="mb-2 text-2xl font-semibold tracking-tight text-gray-900 -:text-white">
                     {{ $totalPendaftar }}</h5>
             </a>
-            <p class="mb-3 font-normal text-gray-500 dark:text-gray-400">Total Pendaftar</p>
-            {{-- <p class="text-sm text-gray-400 dark:text-gray-500">Sisa: {{ $sisaPendaftar }} belum membeli formulir</p> --}}
+            <p class="mb-3 font-normal text-gray-500 -:text-gray-400">Total Pendaftar</p>
+            {{-- <p class="text-sm text-gray-400 -:text-gray-500">Sisa: {{ $sisaPendaftar }} belum membeli formulir</p> --}}
         </div>
 
         <!-- Pembelian Formulir -->
-        <div class="rounded-lg border border-gray-200 bg-white p-6 dark:border-gray-700 dark:bg-gray-800">
-            <svg class="mb-3 h-7 w-7 text-gray-500 dark:text-gray-400" aria-hidden="true"
+        <div class="rounded-lg border border-gray-200 bg-white p-6 -:border-gray-700 -:bg-gray-800">
+            <svg class="mb-3 h-7 w-7 text-gray-500 -:text-gray-400" aria-hidden="true"
                 xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
                 <path d="M12 7.5a2.25 2.25 0 1 0 0 4.5 2.25 2.25 0 0 0 0-4.5Z" />
                 <path fill-rule="evenodd"
@@ -30,17 +30,17 @@
             </svg>
 
             <a href="#">
-                <h5 class="mb-2 text-2xl font-semibold tracking-tight text-gray-900 dark:text-white">
+                <h5 class="mb-2 text-2xl font-semibold tracking-tight text-gray-900 -:text-white">
                     {{ $pembelianFormulir }}</h5>
             </a>
-            <p class="mb-3 font-normal text-gray-500 dark:text-gray-400">Pembelian Formulir</p>
-            <p class="text-sm text-gray-400 dark:text-gray-500">Sisa: {{ $sisaPendaftar }} belum
+            <p class="mb-3 font-normal text-gray-500 -:text-gray-400">Pembelian Formulir</p>
+            <p class="text-sm text-gray-400 -:text-gray-500">Sisa: {{ $sisaPendaftar }} belum
                 membeli formulir</p>
         </div>
 
         <!-- Wawancara Dijadwalkan -->
-        <div class="rounded-lg border border-gray-200 bg-white p-6 dark:border-gray-700 dark:bg-gray-800">
-            <svg class="mb-3 h-7 w-7 text-gray-500 dark:text-gray-400" aria-hidden="true"
+        <div class="rounded-lg border border-gray-200 bg-white p-6 -:border-gray-700 -:bg-gray-800">
+            <svg class="mb-3 h-7 w-7 text-gray-500 -:text-gray-400" aria-hidden="true"
                 xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
                 <path d="M8.25 4.5a3.75 3.75 0 1 1 7.5 0v8.25a3.75 3.75 0 1 1-7.5 0V4.5Z" />
                 <path
@@ -48,17 +48,17 @@
             </svg>
 
             <a href="#">
-                <h5 class="mb-2 text-2xl font-semibold tracking-tight text-gray-900 dark:text-white">
+                <h5 class="mb-2 text-2xl font-semibold tracking-tight text-gray-900 -:text-white">
                     {{ $wawancaraDijadwalkan }}</h5>
             </a>
-            <p class="mb-3 font-normal text-gray-500 dark:text-gray-400">Wawancara Dijadwalkan</p>
-            <p class="text-sm text-gray-400 dark:text-gray-500">Sisa: {{ $sisaWawancara }} belum dijadwalkan wawancara
+            <p class="mb-3 font-normal text-gray-500 -:text-gray-400">Wawancara Dijadwalkan</p>
+            <p class="text-sm text-gray-400 -:text-gray-500">Sisa: {{ $sisaWawancara }} belum dijadwalkan wawancara
             </p>
         </div>
 
         <!-- Peserta Diterima -->
-        <div class="rounded-lg border border-gray-200 bg-white p-6 dark:border-gray-700 dark:bg-gray-800">
-            <svg class="mb-3 h-7 w-7 text-gray-500 dark:text-gray-400" aria-hidden="true"
+        <div class="rounded-lg border border-gray-200 bg-white p-6 -:border-gray-700 -:bg-gray-800">
+            <svg class="mb-3 h-7 w-7 text-gray-500 -:text-gray-400" aria-hidden="true"
                 xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
                 <path fill-rule="evenodd"
                     d="M7.502 6h7.128A3.375 3.375 0 0 1 18 9.375v9.375a3 3 0 0 0 3-3V6.108c0-1.505-1.125-2.811-2.664-2.94a48.972 48.972 0 0 0-.673-.05A3 3 0 0 0 15 1.5h-1.5a3 3 0 0 0-2.663 1.618c-.225.015-.45.032-.673.05C8.662 3.295 7.554 4.542 7.502 6ZM13.5 3A1.5 1.5 0 0 0 12 4.5h4.5A1.5 1.5 0 0 0 15 3h-1.5Z"
@@ -69,16 +69,16 @@
             </svg>
 
             <a href="#">
-                <h5 class="mb-2 text-2xl font-semibold tracking-tight text-gray-900 dark:text-white">
+                <h5 class="mb-2 text-2xl font-semibold tracking-tight text-gray-900 -:text-white">
                     {{ $pesertaDiterima }}</h5>
             </a>
-            <p class="mb-3 font-normal text-gray-500 dark:text-gray-400">Peserta Diterima</p>
-            <p class="text-sm text-gray-400 dark:text-gray-500">Sisa: {{ $sisaPesertaDiterima }}
+            <p class="mb-3 font-normal text-gray-500 -:text-gray-400">Peserta Diterima</p>
+            <p class="text-sm text-gray-400 -:text-gray-500">Sisa: {{ $sisaPesertaDiterima }}
                 belum diterima</p>
         </div>
 
         <!-- Chart for School Origins -->
-        <div class="col-span-2 rounded-lg border border-gray-200 bg-white p-6 dark:border-gray-700 dark:bg-gray-800">
+        <div class="col-span-2 rounded-lg border border-gray-200 bg-white p-6 -:border-gray-700 -:bg-gray-800">
             <canvas id="schoolChart"></canvas>
             <script>
                 const ctx = document.getElementById('schoolChart').getContext('2d');
@@ -109,8 +109,9 @@
             </script>
         </div>
 
+
         <!-- Chart for Gender -->
-        <div class="col-span-2 rounded-lg border border-gray-200 bg-white p-6 dark:border-gray-700 dark:bg-gray-800">
+        <div class="col-span-2 rounded-lg border border-gray-200 bg-white p-6 -:border-gray-700 -:bg-gray-800">
             <canvas id="genderChart"></canvas>
             <script>
                 const genderCtx = document.getElementById('genderChart').getContext('2d');
@@ -145,7 +146,7 @@
         </div>
 
         <!-- Chart for Special Needs -->
-        <div class="col-span-2 rounded-lg border border-gray-200 bg-white p-6 dark:border-gray-700 dark:bg-gray-800">
+        <div class="col-span-2 rounded-lg border border-gray-200 bg-white p-6 -:border-gray-700 -:bg-gray-800">
             <canvas id="specialNeedsChart"></canvas>
             <script>
                 const specialNeedsCtx = document.getElementById('specialNeedsChart').getContext('2d');
