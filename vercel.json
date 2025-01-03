@@ -5,30 +5,26 @@
         "api/index.php": { "runtime": "vercel-php@0.6.0" }
     },
     "routes": [
-        { "src": "/build/(.*)", "dest": "/public/build/" },
-        { "src": "/(.*)", "dest": "/api/index.php" }
+        {
+            "src": "/(.*)",
+            "dest": "/api/index.php"
+        }
     ],
-    "public": true,
-    "buildCommand": "vite build",
-    "outputDirectory": "public",
     "env": {
         "APP_ENV": "production",
-        "APP_DEBUG": "false",
-        "APP_URL": "https://pgii-connect.vercel.app",
+        "APP_DEBUG": "true",
+        "APP_URL": "https://pgii-register.vercel.app",
         "APP_KEY": "base64:HflxCgurSxo7emrmr8tPB0Jm1i0x7+3uaUL9ML2zv2A=",
+
         "APP_CONFIG_CACHE": "/tmp/config.php",
         "APP_EVENTS_CACHE": "/tmp/events.php",
         "APP_PACKAGES_CACHE": "/tmp/packages.php",
         "APP_ROUTES_CACHE": "/tmp/routes.php",
         "APP_SERVICES_CACHE": "/tmp/services.php",
         "VIEW_COMPILED_PATH": "/tmp",
+
         "CACHE_DRIVER": "array",
         "LOG_CHANNEL": "stderr",
-        "SESSION_DRIVER": "cookie",
-        "DB_CONNECTION": "mysql",
-        "DB_HOST": "mysql-9ad334e-rdtyaaa.e.aivencloud.com",
-        "DB_PORT": "11566",
-        "DB_DATABASE": "defaultdb",
-        "DB_USERNAME": "avnadmin"
+        "SESSION_DRIVER": "cookie"
     }
 }
