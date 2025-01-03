@@ -151,26 +151,24 @@ class PaymentController extends Controller
 
             // Periksa paymentType yang diterima dari parameter route
             if ($paymentType === 'formulir') {
-                return response()->json([
-                    'success' => true,
-                    'redirect_url' => route('document'),
-                ]);
+                return redirect()
+                    ->route('document')
+                    ->with([
+                        'success' => 'Pembayaran berhasil. Formulir telah dibayar.',
+                    ]);
             } elseif ($paymentType === 'uang_awal') {
-                return response()->json([
-                    'success' => true,
-                    'redirect_url' => route('final'), // Sesuaikan dengan halaman yang dituju
-                ]);
+                return redirect()
+                    ->route('final')
+                    ->with([
+                        'success' => 'Pembayaran uang awal berhasil.',
+                    ]);
             } else {
-                return response()->json([
-                    'success' => true,
-                    'redirect_url' => route('/'), // Sesuaikan dengan halaman yang dituju
-                ]);
+                return redirect()
+                    ->route('home')
+                    ->with([
+                        'error' => 'Jenis pembayaran tidak valid.',
+                    ]);
             }
-        } else {
-        return response()->json([
-            'success' => false,
-            'message' => 'Pembayaran gagal, data tidak ditemukan.',
-        ]);
-    }
+        }
     }
 }

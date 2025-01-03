@@ -88,9 +88,20 @@
                                 placeholder="Misal: 081234567890" value="{{ $student->phone }}" disabled />
                         </div>
                     </div>
-                    <div id="snap-embed-container" class="flex w-1/2 items-center justify-center bg-gray-100 rounded-lg m-8">
+
+                    <div id="snap-embed-container"
+                        class="m-8 flex w-1/2 items-center justify-center rounded-lg bg-gray-100">
                         <div id="snap-token" data-snap-token="{{ $snapToken }}"
                             data-payment-route="{{ route('payment.store', ['paymentType' => $paymentType]) }}"></div>
+                        <form id="paymentForm" method="POST"
+                            action="{{ route('payment.store', ['paymentType' => $paymentType]) }}">
+                            @csrf
+                            <input type="hidden" name="order_id" id="order_id" />
+                            <input type="hidden" name="payment_type" id="payment_type" />
+                            <input type="hidden" name="gross_amount" id="gross_amount" />
+                            <input type="hidden" name="transaction_time" id="transaction_time" />
+                            <button type="submit" id="submitButton" style="display: none;">Submit Payment</button>
+                        </form>
                         <div role="status" class="bg-gray-100">
                             <svg aria-hidden="true" id="loadingSpinner" style="display: none;"
                                 class="h-8 w-8 animate-spin fill-blue-600 text-gray-200 dark:text-gray-600"
@@ -151,38 +162,13 @@
                 // Tampilkan spinner loading
                 document.getElementById('loadingSpinner').style.display = 'inline-block';
 
-                fetch(paymentRoute, {
-                        method: "POST",
-                        headers: {
-                            "Content-Type": "application/json",
-                            "X-CSRF-TOKEN": document.querySelector('meta[name="csrf-token"]').getAttribute(
-                                "content"),
-                        },
-                        body: JSON.stringify(result),
-                    })
-                    .then((response) => response.json())
-                    .then((data) => {
-                        // Sembunyikan spinner setelah menerima response
-                        document.getElementById('loadingSpinner').style.display = 'none';
+                // Isi data pada input hidden
+                document.getElementById('order_id').value = result.order_id;
+                document.getElementById('payment_type').value = result.payment_type;
+                document.getElementById('gross_amount').value = result.gross_amount;
+                document.getElementById('transaction_time').value = result.transaction_time;
 
-                        if (data.success) {
-                            // Setelah sukses, langsung redirect ke URL yang diterima
-                            if (data.redirect_url) {
-                                window.location.href = data.redirect_url; // Arahkan ke URL baru
-                            } else {
-                                window.location.reload(); // Reload halaman jika tidak ada redirect
-                            }
-                        } else {
-                            alert("Pembayaran gagal, coba lagi.");
-                        }
-                    })
-                    .catch((error) => {
-                        // Sembunyikan spinner jika terjadi error
-                        document.getElementById('loadingSpinner').style.display = 'none';
-
-                        console.error("Error sending payment result:", error);
-                        alert("Gagal mengirim hasil pembayaran. Silakan coba lagi.");
-                    });
+                document.getElementById('submitButton').click(); // Trigger the submit
             }
         });
     </script>
